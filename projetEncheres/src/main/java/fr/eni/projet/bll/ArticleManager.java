@@ -1,8 +1,6 @@
 package fr.eni.projet.bll;
 
 import java.time.LocalDateTime;
-import java.util.Calendar;
-import java.util.Date;
 
 import fr.eni.projet.BusinessException;
 import fr.eni.projet.bo.ArticleVendu;
@@ -67,6 +65,10 @@ public class ArticleManager {
 		{
 			businessException.ajouterErreur(CodesResultatBLL.REGLE_ARTICLE_CASE_NULLE_ERREUR);
 		}
+	}
+	
+	public ArticleVendu selectionnerArticleById(int noArticle) throws BusinessException {
+			return this.articleDAO.selectArticleById(noArticle);
 	}
 
 }

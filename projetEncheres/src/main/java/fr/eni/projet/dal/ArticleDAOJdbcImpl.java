@@ -3,38 +3,28 @@ package fr.eni.projet.dal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Timestamp;
 import java.util.List;
 
 import fr.eni.projet.BusinessException;
 import fr.eni.projet.bo.ArticleVendu;
 
-public class ArticleDAOJdbcImpl implements ArticleDAO{
-	private static final String INSERT_ARTICLE="insert into ARTICLES_VENDUS(nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, "
-											 + "prix_vente, no_utilisateur, no_categorie) values(?,?,?,?,?,?,?,?)";
-	private static final String SELECT_DETAIL_VENTE=" SELECT a.no_article, a.nom_article, a.description, a.date_debut_encheres, a.date_fin_encheres, "
-													+ "a.prix_initial, a.prix_vente"
-													+ "u.no_utilisateur, u.rue, u.code_postal, u.ville, " 
-													+ "c.no_categorie, c.libelle" 
-													+ " FROM ARTICLES_VENDUS a INNER JOIN UTILISATEURS u ON a.no_utilisateur=u.no_utilisateur "
-																			+ "INNER JOIN CATEGORIES c ON a.no_categorie=c.no_categorie" 
-													+ " WHERE r.date=?"
-													+ "	ORDER BY r.date desc, r.heure desc";
+public class ArticleDAOJdbcImpl implements ArticleDAO {
+	private static final String INSERT_ARTICLE = "insert into ARTICLES_VENDUS(nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, "
+			+ "prix_vente, no_utilisateur, no_categorie) values(?,?,?,?,?,?,?,?)";
+	private static final String SELECT_DETAIL_VENTE = " SELECT a.no_article, a.nom_article, a.description, a.date_debut_encheres, a.date_fin_encheres, "
+			+ "a.prix_initial, a.prix_vente, a.no_utilisateur, a.no_categorie" + " FROM ARTICLES_VENDUS a "
+			+ " WHERE a.no_article=?";
 
-	
 	@Override
 	public void insert(ArticleVendu article) throws BusinessException {
-		if(article==null)
-		{
+		if (article == null) {
 			BusinessException businessException = new BusinessException();
 			businessException.ajouterErreur(CodesResultatDAL.INSERT_ARTICLE_ECHEC);
 			throw businessException;
 		}
-		
-		try(Connection cnx = ConnectionProvider.getConnection())
-		{
-			try
-			{
+
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+			try {
 				cnx.setAutoCommit(false);
 				PreparedStatement pstmt = cnx.prepareStatement(INSERT_ARTICLE, PreparedStatement.RETURN_GENERATED_KEYS);
 				pstmt.setString(1, article.getNomArticle());
@@ -47,30 +37,24 @@ public class ArticleDAOJdbcImpl implements ArticleDAO{
 				pstmt.setInt(8, article.getNoCategorie());
 				pstmt.executeUpdate();
 				ResultSet rs = pstmt.getGeneratedKeys();
-				if(rs.next())
-				{
+				if (rs.next()) {
 					article.setNoArticle(rs.getInt(1));
 				}
 				rs.close();
 				pstmt.close();
 				cnx.commit();
-			}
-			catch(Exception e)
-			{
+			} catch (Exception e) {
 				e.printStackTrace();
 				cnx.rollback();
 				throw e;
 			}
-		}
-		catch(Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 			BusinessException businessException = new BusinessException();
 			businessException.ajouterErreur(CodesResultatDAL.INSERT_ARTICLE_ECHEC);
 			throw businessException;
 		}
 
-		
 	}
 
 	@Override
@@ -92,9 +76,30 @@ public class ArticleDAOJdbcImpl implements ArticleDAO{
 	}
 
 	@Override
-	public List<ArticleVendu> selectDetailVente(int noArticle) throws BusinessException {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public ArticleVendu selectArticleById(int noArticle) throws BusinessException {
+		ArticleVendu article = null;
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+				PreparedStatement pstmt = cnx.prepareStatement(SELECT_DETAIL_VENTE);
 
+				pstmt.setInt(1, noArticle);
+
+				ResultSet rs = pstmt.executeQuery();
+				if (rs.next()) {
+
+					article = new ArticleVendu(rs.getInt("no_article"), rs.getString("nom_article"),
+							rs.getString("description"), rs.getTimestamp("date_debut_encheres").toLocalDateTime(),
+							rs.getTimestamp("date_fin_encheres").toLocalDateTime(), rs.getInt("prix_initial"),
+							rs.getInt("prix_vente"), rs.getInt("no_utilisateur"), rs.getInt("no_categorie"));
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+				BusinessException businessException = new BusinessException();
+				businessException.ajouterErreur(CodesResultatDAL.LECTURE_DETAIL_ARTICLE_ECHEC);
+				throw businessException;
+			}
+			return article;
+
+		
+	}
 }
