@@ -20,14 +20,14 @@ public abstract class CodesResultatDAL {
 	 */
 	public static final int LECTURE_DETAIL_ARTICLE_ECHEC = 10002;
 	/**
-	 * Echec de la lecture d'une liste de course
+	 * Echec de la lecture d'une categorie
 	 */
 	public static final int LECTURE_DETAIL_CATEGORIE_ECHEC = 10003;
-//	/**
-//	 * Liste de course inexistante
-//	 */
-//	public static final int LECTURE_LISTE_INEXISTANTE = 10004;
-//	/**
+	/**
+	 * Echec de la lecture d'un utilisateur
+	 */
+	public static final int LECTURE_DETAIL_UTILISATEUR_ECHEC = 10004;
+	/**
 //	 * Erreur à la suppression d'un article
 //	 */
 //	public static final int SUPPRESSION_ARTICLE_ERREUR = 10005;
