@@ -11,7 +11,7 @@ import fr.eni.projet.bo.Utilisateur;
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private static final String SELECT_VERIF_PSEUDO = "SELECT * FROM utilisateurs where pseudo=? and mot_de_passe=?";
 	private static final String SELECT_VERIF_EMAIL = "SELECT * FROM utilisateurs where email=? and mot_de_passe=?";
-
+	private static final String DELETE_UTILISATEUR = "DELETE FROM UTILISATEURS where no_utilisateur = ?";
 	@Override
 	public Utilisateur ValiderPseudoPassword(String login, String password) throws BusinessException, SQLException {
 		if (login == null || password == null) {
@@ -92,5 +92,20 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			        return user;
 		}
 	}
+	
+	//supression du compte
+	public void supprimeUtilisateur(Utilisateur utilisateur) throws BusinessException {
+		try {  
+			
+	        Connection cnx = ConnectionProvider.getConnection();
+	        PreparedStatement pstmt = cnx.prepareStatement(DELETE_UTILISATEUR);
+	        pstmt.setInt(1, utilisateur.getNoUtilisateur());
+	        pstmt.executeUpdate(); 
+	    } catch(Exception e) {
+	        System.out.println(e);
+	    }
+	}
+	//modification de l'utilisateur
+	
 }
 
