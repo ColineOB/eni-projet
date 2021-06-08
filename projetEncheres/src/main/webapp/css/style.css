@@ -157,4 +157,11 @@ footer {
 	display: flex;
 	justify-content: center;
 	flex-wrap: nowrap;
+}	
+/* JSP Detail Vente */
+.blocEntierDetailVente{
+	display: flex;
+	justify-content: center;
+	flex-wrap: nowrap;
+	flex-direction: column;
 }
