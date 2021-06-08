@@ -13,7 +13,7 @@ public class InscriptionDAOJdbclmpl implements InscriptionDAO {
 	private static final String SELECT_VERIF_PSEUDO = "SELECT pseudo FROM UTILISATEURS where pseudo=?";
 	private static final String SELECT_VERIF_EMAIL = "SELECT email FROM UTILISATEURS where email=?";
 	private static final String INSERT_UTILISATEUR = "insert into UTILISATEURS (pseudo,nom,prenom,email,telephone,rue,code_postal,ville,mot_de_passe,credit,administrateur) values(?,?,?,?,?,?,?,?,?,?,?)";
-	private static final String DELETE_UTILISATEUR = "DELETE FROM UTILISATEURS where no_utilisateur = ?";
+	
 	
 	public void inscrireUtilisateur(Utilisateur utilisateur) throws BusinessException {
 
@@ -88,16 +88,5 @@ public boolean verifPseudo (String pseudo) {
 	return test;
 }
 
-public void supprimeUtilisateur(Utilisateur utilisateur) throws BusinessException {
-	try {  
-		
-        Connection cnx = ConnectionProvider.getConnection();
-        PreparedStatement pstmt = cnx.prepareStatement(DELETE_UTILISATEUR);
-        pstmt.setInt(1, utilisateur.getNoUtilisateur());
-        pstmt.executeUpdate(); 
-    } catch(Exception e) {
-        System.out.println(e);
-    }
-}
 
 }
