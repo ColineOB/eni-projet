@@ -8,4 +8,5 @@ import fr.eni.projet.bo.Utilisateur;
 public interface UtilisateurDAO {
 	public Utilisateur ValiderPseudoPassword(String login, String password) throws BusinessException, SQLException;
 	public Utilisateur ValiderEmailPassword(String email, String password) throws BusinessException, SQLException;
+	public Utilisateur selectUtilisateurById(int noUtilisateur) throws BusinessException ;
 }

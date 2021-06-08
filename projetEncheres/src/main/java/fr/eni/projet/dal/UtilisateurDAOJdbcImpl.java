@@ -11,6 +11,7 @@ import fr.eni.projet.bo.Utilisateur;
 public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private static final String SELECT_VERIF_PSEUDO = "SELECT * FROM utilisateurs where pseudo=? and mot_de_passe=?";
 	private static final String SELECT_VERIF_EMAIL = "SELECT * FROM utilisateurs where email=? and mot_de_passe=?";
+	private static final String SELECT_BY_ID = "SELECT * FROM utilisateurs where no_utilisateur=?";
 
 	@Override
 	public Utilisateur ValiderPseudoPassword(String login, String password) throws BusinessException, SQLException {
@@ -76,6 +77,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 				 
 			        if (rs.next()) {
 			            user = new Utilisateur();
+			            user.setNoUtilisateur(rs.getInt("no_utilisateur"));
 			            user.setPseudo(rs.getString("pseudo"));
 			            user.setNom(rs.getString("nom"));
 			            user.setPrenom(rs.getString("prenom"));
@@ -91,6 +93,31 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 			 
 			        return user;
 		}
+	}
+
+	@Override
+	public Utilisateur selectUtilisateurById(int noUtilisateur) throws BusinessException {
+		Utilisateur utilisateur = null;
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+			PreparedStatement pstmt = cnx.prepareStatement(SELECT_BY_ID);
+
+			pstmt.setInt(1, noUtilisateur);
+
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+
+				utilisateur = new Utilisateur(rs.getInt("no_utilisateur"), rs.getString("pseudo"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("telephone"), 
+						rs.getString("rue"), rs.getString("code_postal"), rs.getString("ville"),rs.getString("mot_de_passe"), rs.getInt("credit"), rs.getBoolean("administrateur"));
+				
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			BusinessException businessException = new BusinessException();
+			businessException.ajouterErreur(CodesResultatDAL.LECTURE_DETAIL_UTILISATEUR_ECHEC);
+			throw businessException;
+		}
+		return utilisateur;
 	}
 }
 
