@@ -5,8 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.projet.BusinessException;
+import fr.eni.projet.bll.ArticleManager;
 import fr.eni.projet.bll.CategorieManager;
 import fr.eni.projet.bll.EnchereManager;
+import fr.eni.projet.bo.ArticleVendu;
+import fr.eni.projet.bo.Enchere;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -37,11 +40,24 @@ public class ServletAccueil extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CategorieManager categorieManager = new CategorieManager();
 		EnchereManager enchereManager = new EnchereManager();
+		ArticleManager articleManager = new ArticleManager();
+		Enchere enchere = new Enchere();
+		ArticleVendu article = new ArticleVendu();
+		int noArticleEnchere = enchere.getNo_article();
+		int noArticleArticle = article.getNoArticle();
+		String nomArticle = null;
+		
 		List<Integer> listeCodesErreur=new ArrayList<>();
 		
 		try {
+			if (noArticleEnchere == noArticleArticle) {
+				nomArticle = article.getNomArticle();
+				request.setAttribute("nomArticle", nomArticle);
+			}
+			
 			request.setAttribute("categorie", categorieManager.selectionnerCategories());
 			request.setAttribute("enchere", enchereManager.selectionnerEncheres());
+			request.setAttribute("nomArticle", nomArticle);
 		} catch (BusinessException e) {
 			request.setAttribute("listeCodesErreur",e.getListeCodesErreur());
 			e.printStackTrace();
