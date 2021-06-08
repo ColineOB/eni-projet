@@ -10,7 +10,7 @@
 	</head>
 	<body>
 
-		<%@ include file="./fragments/headerWithoutConnect.html" %>
+		<%@ include file="./fragments/headerConnect.jsp" %>
 
 		<section>
 		<h1>Nouvelle vente</h1>

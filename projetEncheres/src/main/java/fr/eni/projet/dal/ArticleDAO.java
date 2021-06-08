@@ -21,7 +21,7 @@ public interface ArticleDAO {
 
 	public List<ArticleVendu> selectRecherche(String recherche) throws BusinessException; // Pour "nom de l'article contient"s
 	
-	public List<ArticleVendu> selectDetailVente(int noArticle) throws BusinessException;
+	public ArticleVendu selectArticleById(int noArticle) throws BusinessException;
 	//achat:
 		//Enchères ouvertes
 		//mes enchères en cours

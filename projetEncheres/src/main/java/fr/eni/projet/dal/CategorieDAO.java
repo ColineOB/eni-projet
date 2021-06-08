@@ -17,5 +17,6 @@ import fr.eni.projet.bo.Categorie;
 public interface CategorieDAO {
 
 	public List<Categorie> selectAllCategorie() throws BusinessException;
+	public Categorie selectCategorieById(int noCategorie) throws BusinessException ;
 	
 }
