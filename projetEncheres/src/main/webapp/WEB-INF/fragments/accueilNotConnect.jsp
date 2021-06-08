@@ -1,7 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="fr.eni.projet.bll.ArticleManager"%>
 
 <%@ include file="/WEB-INF/fragments/headerNotConnect.html" %>
+<%-- <c:set var="a" value="${ArticleManager.selectionnerArticleById(e.no_article)}"/> --%>
 		
 <section class="section_accueil">
 	<h1>Liste des enchères</h1>
@@ -39,7 +41,13 @@
 	<div class="div_global_articles">
 		<c:forEach var="e" items="${enchere}">
 			<div class="div_articles">
-				<%-- <p>Nom article : ${}</p> --%>
+				<%
+			String uneVariable = (String) request.getAttribute("nomArticle");
+		%>
+		
+		<p>L'information fournie par la Servlet est : <%=uneVariable %>.</p>
+<%-- 				<p>Nom article : ${a.nomArticle}</p> --%>
+				<p>Nom article : ${nomArticle}</p>
 				<p>Numéro article : ${e.no_article}</p>
 				<p>Date enchere : ${e.dateEncheres}</p>
 				<p>Prix : ${e.montant_encheres} points</p>
