@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.projet.BusinessException;
-import fr.eni.projet.bo.Categorie;
 import fr.eni.projet.bo.Enchere;
 
 /**
@@ -30,20 +29,16 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 	@Override
 	public List<Enchere> selectAllEnchere() throws BusinessException {
 		List<Enchere> listeEncheres = new ArrayList<Enchere>();
-        try(Connection cnx = ConnectionProvider.getConnection())
-        {
+        try(Connection cnx = ConnectionProvider.getConnection()) {
             PreparedStatement pstmt = cnx.prepareStatement(SELECT_ALL);
             ResultSet rs = pstmt.executeQuery();
-            while(rs.next())
-			{
+            while(rs.next()) {
             	listeEncheres.add(new Enchere(rs.getInt("no_utilisateur"), rs.getInt("no_article"), rs.getDate("date_enchere"), rs.getInt("montant_enchere")));
 			}
-        }
-        catch(Exception e)
-        {
+        } catch(Exception e) {
             e.printStackTrace();
             BusinessException businessException = new BusinessException();
-            businessException.ajouterErreur(CodesResultatDAL.LECTURE_CATEGORIE_ECHEC);
+            businessException.ajouterErreur(CodesResultatDAL.LECTURE_ENCHERE_ECHEC);
             throw businessException;
         }
         return listeEncheres;

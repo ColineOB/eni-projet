@@ -24,7 +24,7 @@ private EnchereDAO enchereDAO;
 		this.enchereDAO = DAOFactory.getEnchereDAO();
 	}
 	
-	public List<Enchere> selectionnerCategories() throws BusinessException
+	public List<Enchere> selectionnerEncheres() throws BusinessException
 	{
 		return this.enchereDAO.selectAllEnchere();
 	}

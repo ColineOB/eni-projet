@@ -51,11 +51,16 @@ public abstract class CodesResultatDAL {
 	public static final int PSEUDO_DEJA_PRIS =10100;
 	public static final int EMAIL_DEJA_PRIS =10101;
 
-  /* VIRGINIE */
-	/*
+	/* VIRGINIE */
+	/**
 	 * Erreur à la lecture des catégories
 	 */
 	public static final int LECTURE_CATEGORIE_ECHEC = 10200;
+	
+	/**
+	 * Erreur à la lecture des enchères
+	 */
+	public static final int LECTURE_ENCHERE_ECHEC = 10201;
 
 }
 

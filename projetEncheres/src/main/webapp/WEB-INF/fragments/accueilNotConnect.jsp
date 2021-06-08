@@ -37,8 +37,13 @@
 	</div>
 	
 	<div class="div_global_articles">
-<%-- 				<c:forEach var="" items="${}"> --%>
-				
-<%-- 				</c:forEach> --%>
+		<c:forEach var="e" items="${enchere}">
+			<div class="div_articles">
+				<%-- <p>Nom article : ${}</p> --%>
+				<p>Numéro article : ${e.no_article}</p>
+				<p>Date enchere : ${e.dateEncheres}</p>
+				<p>Prix : ${e.montant_encheres} points</p>
+			</div>
+		</c:forEach>
 	</div>
 </section>

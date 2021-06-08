@@ -2,11 +2,11 @@ package fr.eni.projet.servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import fr.eni.projet.BusinessException;
 import fr.eni.projet.bll.CategorieManager;
+import fr.eni.projet.bll.EnchereManager;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -36,10 +36,12 @@ public class ServletAccueil extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CategorieManager categorieManager = new CategorieManager();
+		EnchereManager enchereManager = new EnchereManager();
 		List<Integer> listeCodesErreur=new ArrayList<>();
 		
 		try {
 			request.setAttribute("categorie", categorieManager.selectionnerCategories());
+			request.setAttribute("enchere", enchereManager.selectionnerEncheres());
 		} catch (BusinessException e) {
 			request.setAttribute("listeCodesErreur",e.getListeCodesErreur());
 			e.printStackTrace();
