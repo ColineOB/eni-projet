@@ -14,6 +14,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 	private static final String SELECT_DETAIL_VENTE = " SELECT a.no_article, a.nom_article, a.description, a.date_debut_encheres, a.date_fin_encheres, "
 			+ "a.prix_initial, a.prix_vente, a.no_utilisateur, a.no_categorie" + " FROM ARTICLES_VENDUS a "
 			+ " WHERE a.no_article=?";
+//	private static final String SELECT_NOM = "SELECT a.nom_article FROM ARTICLES_VENDUS a WHERE a.no_article=?";
 
 	@Override
 	public void insert(ArticleVendu article) throws BusinessException {
@@ -101,5 +102,37 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			return article;
 
 		
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see fr.eni.projet.dal.ArticleDAO#selectNomArticleById(int)
+	 */
+	@Override
+	public String selectNomArticleById(int noArticle) throws BusinessException {
+		ArticleVendu article = null;
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+				PreparedStatement pstmt = cnx.prepareStatement(SELECT_DETAIL_VENTE);
+
+				pstmt.setInt(1, noArticle);
+
+				ResultSet rs = pstmt.executeQuery();
+				if (rs.next()) {
+
+					article = new ArticleVendu(rs.getInt("no_article"), rs.getString("nom_article"),
+							rs.getString("description"), rs.getTimestamp("date_debut_encheres").toLocalDateTime(),
+							rs.getTimestamp("date_fin_encheres").toLocalDateTime(), rs.getInt("prix_initial"),
+							rs.getInt("prix_vente"), rs.getInt("no_utilisateur"), rs.getInt("no_categorie"));
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+				BusinessException businessException = new BusinessException();
+				businessException.ajouterErreur(CodesResultatDAL.LECTURE_DETAIL_ARTICLE_ECHEC);
+				throw businessException;
+			}
+			String nomArticle = article.getNomArticle();
+			return nomArticle;
 	}
 }

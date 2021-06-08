@@ -70,5 +70,9 @@ public class ArticleManager {
 	public ArticleVendu selectionnerArticleById(int noArticle) throws BusinessException {
 			return this.articleDAO.selectArticleById(noArticle);
 	}
+	
+	public String selectionnerNomArticleById(int noArticle) throws BusinessException {
+			return this.articleDAO.selectNomArticleById(noArticle);
+	}
 
 }
