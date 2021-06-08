@@ -42,7 +42,6 @@ public class ServletNouvelleVente extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CategorieManager categorieManager = new CategorieManager();
-		
 		try {
 			request.setAttribute("categorie", categorieManager.selectionnerCategories());
 		} catch (BusinessException e) {
