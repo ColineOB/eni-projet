@@ -1,0 +1,160 @@
+/*!
+ * Start Bootstrap - 4 Col Portfolio (https://startbootstrap.com/template-overviews/4-col-portfolio)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-4-col-portfolio/blob/master/LICENSE)
+ */
+
+* {
+	box-sizing: border-box;
+}
+
+html {
+	height: 100%;
+}
+	
+body {
+	min-height: 84%;
+	max-height: 100%;
+	margin: 0;
+	padding: 0;
+	position: relative;
+}
+
+#entete {
+	display: flex;
+	justify-content: space-between;
+	line-height: 50px;
+}
+
+#entete a {
+	color: white;
+}
+
+#logo a {
+	font-size: 30px;
+}
+
+#logo a:hover {
+	text-decoration: none;
+	color: lightgrey;
+}
+
+section {
+	margin-top: 150px;
+}
+
+h1 {
+	text-align: center;
+}
+    
+footer {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	left: 0;
+}
+
+#selectCategorie {
+	text-transform: capitalize;
+}
+/*********************/
+
+
+/* JSP Accueil */
+.section_accueil {
+	margin: 150px 20% 0;
+}
+
+#form_search {
+	display: flex;
+}
+/*********************/
+
+
+/* JSP Inscription */
+.inscription{
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0 auto;
+}
+
+.inscription #gauche{
+	position: relative;
+	width: 200px;
+}
+
+.inscription #droite{
+	position: relative;
+	width: 200px;
+}
+
+.inscription #bouton{
+	position: absolute;
+	top: 400px;
+	right: center;
+  	}
+/*********************/		
+
+
+/* JSP Connexion */
+.messageErreur{
+	text-align: center;
+	color: red;
+	margin-bottom: 10px;
+	font-weight: bold;
+}
+    
+.blocEntierConnexion{
+	display: flex;
+	justify-content: center;
+	flex-wrap: nowrap;
+}
+
+.blocEntierConnexion form {
+    -webkit-logical-width: 300px;
+/* 		    -ms-logical-width: 310px; */	    
+}
+
+.blocIdentifiant{
+	display: flex;
+  		justify-content: space-between;
+  		margin-bottom: 15px;
+}
+
+.blocPassword{
+	display: flex;
+  		justify-content: space-between;
+  		margin-bottom: 15px;
+}
+
+.blocSubmitSouvenirOublie{
+	display: flex;
+	margin-bottom: 15%;
+  		justify-content: space-between;
+}
+
+.blocSouvenir label{
+	margin-bottom: 0;
+}
+
+.blocSouvenirOublie{
+	flex-direction: column;
+	text-align: right;
+}
+
+.boutonConnexion input{
+	padding: 10px 17px
+}
+
+.blocCreerCompte input{
+	width: 100%;
+  		padding: 20px;
+}
+/*********************/
+
+/* JSP NouvelleVente */
+.blocEntierNouvelleVente{
+	display: flex;
+	justify-content: center;
+	flex-wrap: nowrap;
+}

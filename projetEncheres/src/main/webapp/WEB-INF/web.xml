@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee;http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
+  <display-name>projetEncheres</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <session-config> 
+		<session-timeout>5</session-timeout>
+	</session-config>
+  <!-- <context-param>
+    <description>Liste des catégories pour l'accueil</description>
+    <param-name>CATEGORIESACCUEIL</param-name>
+    <param-value>toutes,informatique,ameublement,vêtement,sportEtLoisirs</param-value>
+  </context-param>
+  <context-param>
+    <description>Liste des catégories pour la nouvelle vente</description>
+    <param-name>CATEGORIESNOUVELLEVENTE</param-name>
+    <param-value>,informatique,ameublement,vêtement,sportEtLoisirs</param-value>
+  </context-param> -->
+</web-app>
