@@ -7,12 +7,14 @@ import java.util.List;
 
 import fr.eni.projet.BusinessException;
 import fr.eni.projet.bll.InscriptionManager;
+import fr.eni.projet.bo.Utilisateur;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class ServletInscription
@@ -76,9 +78,11 @@ public class ServletInscription extends HttpServlet {
 				//ajout de l'utilisateur
        InscriptionManager inscriptionManager = new InscriptionManager();
        	try {
-       		inscriptionManager.inscrireUtilisateur(pseudo, nom, prenom, email, tel, rue, codePostal, ville, mdp, 0, false);
+       		Utilisateur utilisateur = inscriptionManager.inscrireUtilisateur(pseudo, nom, prenom, email, tel, rue, codePostal, ville, mdp, 0, false);
        			//connection de l'utilisateur (A FAIRE)
-       		RequestDispatcher rd = request.getRequestDispatcher("/index");
+       		HttpSession session = request.getSession();
+			session.setAttribute("utilisateur", utilisateur);
+       		RequestDispatcher rd = request.getRequestDispatcher("/ServletAccueil");
 			rd.forward(request, response);
 		} catch (BusinessException | SQLException e) {
 			//Sinon je retourne à la page d'ajout pour indiquer les problèmes:
