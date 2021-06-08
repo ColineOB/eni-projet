@@ -8,7 +8,7 @@
 		</div>
 
 		<div>
-			<a href="">Enchères</a>
+			<a href="index.jsp">Enchères</a>
 			<a href="${pageContext.request.contextPath}/ServletNouvelleVente">Vendre un article</a>
 			<a href="">Mon profil</a>
 			<a href="${pageContext.request.contextPath}/ServletDeconnexion">Déconnexion</a>
