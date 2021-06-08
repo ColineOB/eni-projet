@@ -3,6 +3,11 @@
  */
 package fr.eni.projet.dal;
 
+import java.util.List;
+
+import fr.eni.projet.BusinessException;
+import fr.eni.projet.bo.Enchere;
+
 /**
  * Classe modélisant
  *
@@ -10,5 +15,7 @@ package fr.eni.projet.dal;
  * @author ENI
  */
 public interface EnchereDAO {
+	
+	public List<Enchere> selectAllEnchere() throws BusinessException;
 
 }

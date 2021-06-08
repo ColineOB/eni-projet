@@ -18,7 +18,7 @@ import fr.eni.projet.dal.DAOFactory;
  */
 public class CategorieManager {
 
-private CategorieDAO categorieDAO;
+	private CategorieDAO categorieDAO;
 	
 	public CategorieManager() {
 		this.categorieDAO = DAOFactory.getCategorieDAO();
