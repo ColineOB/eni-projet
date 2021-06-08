@@ -1,15 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-    <%@page import="fr.eni.projet.messages.LecteurMessage"%>
 <!DOCTYPE html>
 <html>
-<jsp:include page="/WEB-INF/fragments/head.jsp"></jsp:include>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<jsp:include page="/WEB-INF/fragments/headerConnect.jsp"></jsp:include>
 <body>
 	<%@ include file="./fragments/headerWithoutConnect.html" %>
-<section>
-<h1>Inscription</h1>
-	<%-- formulaire d'inscription --%>
+	<section>
+	<h1>Mon profil</h1>
 	<form action="" method="post" class="inscription">
 		<div class="inscription">
 			<div id="gauche">
@@ -28,7 +29,9 @@
 					<label for="nom">Nom:</label>
 				<input type="text" name="nom" id="nom" placeholder="nom" required>
 					<label for="email">@mail:</label>
+						<span class="erreur">${form.erreurs['nom']}</span>
 				<input type="email" name="email" id="email" placeholder="monEmail@domaine.fr" required>
+						<span class="erreur">${form.erreurs['email']}</span>
 					<label for="rue">Rue:</label>
 				<input type="text" name="rue" id="rue" placeholder="rue" required>
 					<label for="ville">Ville:</label>
@@ -38,18 +41,12 @@
 				<input type="password" name="confirmation" id="confirmation" placeholder="mdp" required>
 			</div>
 			<div id="bouton">
-				<input type="submit" value="Créer">
-				<input type="reset" value="annuler">
-				<div class="messageErreur"><c:if test="${listeCodesErreur!=null}">
-                    <p style="color:red;">Erreur d'inscription :</p>
-                    <c:forEach var="codeErreur" items="${listeCodesErreur}">
-                       <c:out value="${LecteurMessage.getMessageErreur(codeErreur)}" />
-                    </c:forEach>
-                </c:if></div>
+				<input type="submit" value="Modifier">
+				<input type="button" value="Supprimer mon compte">
 			</div>
 		</div>
 	</form>
-</section>
+	
+	</section>
 </body>
-<%@ include file="./fragments/footer.html" %>
 </html>
