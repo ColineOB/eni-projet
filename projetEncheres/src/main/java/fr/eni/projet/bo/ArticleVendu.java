@@ -2,7 +2,6 @@ package fr.eni.projet.bo;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 /*Classe créée juste sur la base de l'UML + getters/setters + To String 
  * + 3 Constructeurs (sans paramètres, avec tous les paramètres, juste sans 
@@ -54,6 +53,20 @@ public class ArticleVendu implements Serializable {
 		this.noUtilisateur = noUtilisateur;
 		this.noCategorie = noCategorie;
 	}
+	public ArticleVendu(int noArticle, String nomArticle, String description, LocalDateTime dateDebutEncheres,
+			LocalDateTime dateFinEncheres, int miseAPrix, int prixVente, int noUtilisateur, int noCategorie) {
+		super();
+		this.noArticle = noArticle;
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.dateDebutEncheres = dateDebutEncheres;
+		this.dateFinEncheres = dateFinEncheres;
+		this.miseAPrix = miseAPrix;
+		this.prixVente = prixVente;
+		this.noUtilisateur = noUtilisateur;
+		this.noCategorie = noCategorie;
+	}
+	
 
 	public int getNoArticle() {
 		return noArticle;

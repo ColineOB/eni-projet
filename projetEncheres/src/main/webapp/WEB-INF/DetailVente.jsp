@@ -6,6 +6,8 @@
 		<jsp:include page="/WEB-INF/fragments/head.jsp"></jsp:include>
 	</head>
 	<body>
+		<%@ include file="./fragments/headerConnect.jsp" %>
+		
 		<p>Nom vente</p>
 		<p>Description : </p>
 		<p>Categorie : </p>

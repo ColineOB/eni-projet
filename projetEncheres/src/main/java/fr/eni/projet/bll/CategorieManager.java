@@ -29,4 +29,9 @@ public class CategorieManager {
 		return this.categorieDAO.selectAllCategorie();
 	}
 	
+	public Categorie selectionnerCategorieById(int noCategorie) throws BusinessException {
+		return this.categorieDAO.selectCategorieById(noCategorie);
+		
+	}
+	
 }
