@@ -47,5 +47,9 @@ public class UtilisateurManager {
 		return this.utilisateurDAO.selectUtilisateurById(noUtilisateur);
 	}
 
+	public Utilisateur supprimerUtilisateur(int no_utilisateur)  throws BusinessException, SQLException {
+		return this.utilisateurDAO.supprimeUtilisateur(no_utilisateur);
+	}
+
 
 }
