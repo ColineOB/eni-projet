@@ -14,6 +14,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private static final String SELECT_BY_ID = "SELECT * FROM utilisateurs where no_utilisateur=?";
 	private static final String DELETE_UTILISATEUR = "DELETE FROM UTILISATEURS where no_utilisateur = ?";
 
+
   @Override
 	public Utilisateur ValiderPseudoPassword(String login, String password) throws BusinessException, SQLException {
 		if (login == null || password == null) {

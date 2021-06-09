@@ -8,6 +8,7 @@ import fr.eni.projet.dal.CodesResultatDAL;
 import fr.eni.projet.dal.DAOFactory;
 import fr.eni.projet.dal.InscriptionDAO;
 import fr.eni.projet.servlets.CodesResultatServlets;
+import jakarta.servlet.http.HttpSession;
 
 public class InscriptionManager {
 	private InscriptionDAO inscriptionDAO;
