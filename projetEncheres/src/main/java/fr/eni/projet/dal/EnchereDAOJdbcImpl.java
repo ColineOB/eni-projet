@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.projet.BusinessException;
+import fr.eni.projet.bo.ArticleVendu;
 import fr.eni.projet.bo.Enchere;
+import fr.eni.projet.bo.Utilisateur;
 
 /**
  * Classe modélisant
@@ -19,7 +21,10 @@ import fr.eni.projet.bo.Enchere;
  * @author ENI
  */
 public class EnchereDAOJdbcImpl implements EnchereDAO {
-	private static final String SELECT_ALL = "SELECT * FROM ENCHERES";
+//	private static final String SELECT_ALL = "SELECT * FROM ENCHERES";
+	private static final String SELECT_ALL = "SELECT date_enchere, montant_enchere, nom_article, pseudo FROM ENCHERES e"
+			+ "	LEFT JOIN ARTICLES_VENDUS a ON e.no_article = a.no_article"
+			+ "	LEFT JOIN UTILISATEURS u ON e.no_utilisateur = u.no_utilisateur;";
 
 	/**
 	 * {@inheritDoc}
@@ -33,7 +38,12 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
             PreparedStatement pstmt = cnx.prepareStatement(SELECT_ALL);
             ResultSet rs = pstmt.executeQuery();
             while(rs.next()) {
-            	listeEncheres.add(new Enchere(rs.getInt("no_utilisateur"), rs.getInt("no_article"), rs.getDate("date_enchere"), rs.getInt("montant_enchere")));
+            	Utilisateur user = new Utilisateur();
+            	user.setPseudo(rs.getString("pseudo"));
+            	ArticleVendu article = new ArticleVendu();
+            	article.setNomArticle(rs.getString("nom_article"));
+            	Enchere enchere = new Enchere(user, article, rs.getDate("date_enchere"), rs.getInt("montant_enchere"));
+            	listeEncheres.add(enchere);
 			}
         } catch(Exception e) {
             e.printStackTrace();
