@@ -60,8 +60,22 @@ public class ServletAccueil extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		CategorieManager categorieManager = new CategorieManager();
+		EnchereManager enchereManager = new EnchereManager();
+		
+		List<Integer> listeCodesErreur=new ArrayList<>();
+		
+		try {
+			request.setAttribute("categorie", categorieManager.selectionnerCategories());
+			request.setAttribute("enchere", enchereManager.selectionnerEncheres());
+			request.setAttribute("enchere", enchereManager.selectionnerEncheresParMotCle());
+		} catch (BusinessException e) {
+			request.setAttribute("listeCodesErreur",e.getListeCodesErreur());
+			e.printStackTrace();
+		}
+		
+		rd = request.getRequestDispatcher("/WEB-INF/accueil.jsp");
+		rd.forward(request, response);
 	}
 
 }
