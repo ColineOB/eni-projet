@@ -41,9 +41,12 @@ public class ServletModifierProfil extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		UtilisateurManager utilisateurManager = new UtilisateurManager();
+		RequestDispatcher rd=null;	
 		
 		HttpSession session = request.getSession();
 		Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
+		rd = request.getRequestDispatcher("/WEB-INF/ModifierProfil.jsp");
+		rd.forward(request, response);
 	}
 
 	/**

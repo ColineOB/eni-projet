@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 import fr.eni.projet.BusinessException;
 import fr.eni.projet.bo.Utilisateur;
@@ -13,7 +14,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private static final String SELECT_VERIF_EMAIL = "SELECT * FROM utilisateurs where email=? and mot_de_passe=?";
 	private static final String SELECT_BY_ID = "SELECT * FROM utilisateurs where no_utilisateur=?";
 	private static final String DELETE_UTILISATEUR = "DELETE FROM UTILISATEURS where no_utilisateur = ?";
-
+	private static final String UPDATE_UTILISATEUR = "UPDTATE into UTILISATEURS (pseudo,nom,prenom,email,telephone,rue,code_postal,ville,mot_de_passe) where no_utilisateur = ? values(?,?,?,?,?,?,?,?,?)";
 
   @Override
 	public Utilisateur ValiderPseudoPassword(String login, String password) throws BusinessException, SQLException {
@@ -134,5 +135,28 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	    }
 	}
 	//modification de l'utilisateur
+	public void modifierProfil(Utilisateur utilisateur) throws BusinessException {
+		// test de connection à la base de données
+				try {
+					// inscription dans la base de données
+					Connection cnx = ConnectionProvider.getConnection();
+					PreparedStatement pstmt = cnx.prepareStatement(UPDATE_UTILISATEUR);
+					pstmt.setInt(1, utilisateur.getNoUtilisateur());
+					pstmt.setString(2, utilisateur.getPseudo());
+					pstmt.setString(3, utilisateur.getNom());
+					pstmt.setString(4, utilisateur.getPrenom());
+					pstmt.setString(5, utilisateur.getEmail());
+					pstmt.setString(6, utilisateur.getTelephone());
+					pstmt.setString(7, utilisateur.getRue());
+					pstmt.setString(8, utilisateur.getCodePostal());
+					pstmt.setString(9, utilisateur.getVille());
+					pstmt.setString(10, utilisateur.getMotDePasse());
+					pstmt.executeUpdate();
+
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+	}
 }
 
