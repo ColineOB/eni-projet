@@ -22,7 +22,7 @@ import fr.eni.projet.bo.Utilisateur;
  */
 public class EnchereDAOJdbcImpl implements EnchereDAO {
 //	private static final String SELECT_ALL = "SELECT * FROM ENCHERES";
-	private static final String SELECT_ALL = "SELECT date_enchere, montant_enchere, nom_article, pseudo FROM ENCHERES e"
+	private static final String SELECT_ALL = "SELECT date_enchere, montant_enchere, nom_article, a.no_article, pseudo, u.no_utilisateur FROM ENCHERES e"
 			+ "	LEFT JOIN ARTICLES_VENDUS a ON e.no_article = a.no_article"
 			+ "	LEFT JOIN UTILISATEURS u ON e.no_utilisateur = u.no_utilisateur;";
 
@@ -40,8 +40,10 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
             while(rs.next()) {
             	Utilisateur user = new Utilisateur();
             	user.setPseudo(rs.getString("pseudo"));
+            	user.setNoUtilisateur(rs.getInt("no_utilisateur"));
             	ArticleVendu article = new ArticleVendu();
             	article.setNomArticle(rs.getString("nom_article"));
+            	article.setNoArticle(rs.getInt("no_article"));
             	Enchere enchere = new Enchere(user, article, rs.getDate("date_enchere"), rs.getInt("montant_enchere"));
             	listeEncheres.add(enchere);
 			}

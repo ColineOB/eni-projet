@@ -13,12 +13,12 @@
 	<div class="div_global_search">
 		<h3>Filtres :</h3>
 		
-		<form action="<%=request.getContextPath()%>/ServletAccueil" method="post" id="form_search">
-			<div>
-				<div>
+		<form action="<%=request.getContextPath()%>/ServletAccueil" method="post" id="form_search" class="row">
+			<div class="row col-md-6">
+				<div class="col-md-12">
 					<input type="search" id="article-search" name="article-search" aria-label="Rechercher parmis les enchères" placeholder="🔍 Nom de l'article">
 				</div>
-				<div>
+				<div class="col-md-12">
 					<label for="selectCategorie">Categorie</label>
 					<select name="selectCategorie" id="selectCategorie">
 						<c:forEach var="c" items="${categorie}">
@@ -34,18 +34,18 @@
 					</select>
 				</div>
 			</div>
-			<div>
+			<div class="col-md-6">
 				<input type="submit" value="Rechercher"/>
 			</div>
 		</form>
 	</div>
 	
-	<div class="div_global_articles">
+	<div class="row div_global_articles">
 		<c:forEach var="e" items="${enchere}">
-			<div class="div_articles">				
-				<p>Nom article : ${e.article.nomArticle}</p>
+			<div class="col-md-6 div_articles">				
+				<h4><a>${e.article.nomArticle}</a></h4>
 				<p>Prix : ${e.montant_encheres} points</p>
-				<p>Date enchere : ${e.dateEncheres}</p>
+				<p>Fin de l'enchère : ${e.dateEncheres}</p>
 				<p>Vendeur : ${e.user.pseudo}</p>
 			</div>
 		</c:forEach>
