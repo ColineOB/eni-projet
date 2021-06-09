@@ -23,6 +23,12 @@ public class UtilisateurManager {
 		return this.utilisateurDAO.ValiderEmailPassword(email, password);
 	}
 
+	public Utilisateur modifierUtilisateur(String pseudo, String nom, String prenom, String email, String tel,
+			String rue, String codePostal, String ville, String mdp, int i, boolean b) throws BusinessException, SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 }
