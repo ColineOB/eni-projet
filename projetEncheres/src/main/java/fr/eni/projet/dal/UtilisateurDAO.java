@@ -10,4 +10,5 @@ public interface UtilisateurDAO {
 	public Utilisateur ValiderEmailPassword(String email, String password) throws BusinessException, SQLException;
 	public void supprimeUtilisateur(Utilisateur utilisateur)throws BusinessException, SQLException;
 	public Utilisateur selectUtilisateurById(int noUtilisateur) throws BusinessException ;
+	public Utilisateur modifierUtilisateur(Utilisateur utilisateur) throws BusinessException;
 }

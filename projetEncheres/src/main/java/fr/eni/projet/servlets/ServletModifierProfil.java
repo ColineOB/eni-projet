@@ -15,6 +15,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import jakarta.websocket.Session;
 
 /**
  * Servlet implementation class ServletModifierProfil
@@ -33,6 +34,8 @@ public class ServletModifierProfil extends HttpServlet {
 	public static final String CHAMP_VILLE = "ville";
 	public static final String CHAMP_MDP = "mdp";
 	public static final String CHAMP_CONFIRMATION = "confirmation";
+	HttpSession session;
+	Utilisateur utilisateur;
 
  
 
@@ -40,11 +43,9 @@ public class ServletModifierProfil extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		UtilisateurManager utilisateurManager = new UtilisateurManager();
 		RequestDispatcher rd=null;	
-		
-		HttpSession session = request.getSession();
-		Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
+		session = request.getSession();
+		utilisateur = (Utilisateur) session.getAttribute("utilisateur");
 		rd = request.getRequestDispatcher("/WEB-INF/ModifierProfil.jsp");
 		rd.forward(request, response);
 	}
@@ -54,7 +55,10 @@ public class ServletModifierProfil extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<Integer> listeCodesErreur=new ArrayList<>();
+		session = request.getSession();
+		utilisateur = (Utilisateur) session.getAttribute("utilisateur");
 		// lecture des parametres
+		int no_utilisateur = utilisateur.getNoUtilisateur();
 		String pseudo = request.getParameter(CHAMP_PSEUDO);
 		String mdp = request.getParameter(CHAMP_MDP);
 		String confirmation = request.getParameter(CHAMP_CONFIRMATION);
@@ -80,20 +84,16 @@ public class ServletModifierProfil extends HttpServlet {
         	listeCodesErreur.add(CodesResultatServlets.MDP_3_CARACTERES);
         }
 
-				//ajout de l'utilisateur
 		UtilisateurManager utilisateurManager = new UtilisateurManager();
        	try {
-       		Utilisateur utilisateur = utilisateurManager.modifierUtilisateur(pseudo, nom, prenom, email, tel, rue, codePostal, ville, mdp, 0, false);
-       			//connection de l'utilisateur (A FAIRE)
-       		HttpSession session = request.getSession();
-			session.setAttribute("utilisateur", utilisateur);
-       		RequestDispatcher rd = request.getRequestDispatcher("/ServletAccueil");
+       		utilisateur = utilisateurManager.modifierUtilisateur(no_utilisateur, pseudo, nom, prenom, email, tel, rue, codePostal, ville, mdp);
+       		RequestDispatcher rd = request.getRequestDispatcher("/ServletModifierProfil");
 			rd.forward(request, response);
 		} catch (BusinessException | SQLException e) {
 			//Sinon je retourne à la page d'ajout pour indiquer les problèmes:
 			e.printStackTrace();
 			request.setAttribute("listeCodesErreur",((BusinessException) e).getListeCodesErreur());
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Inscription.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/ModifierProfil.jsp");
 			rd.forward(request, response);
 	
 		}
