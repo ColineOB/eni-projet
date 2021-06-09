@@ -166,9 +166,39 @@ footer {
 	flex-wrap: nowrap;
 }
 /* JSP Detail Vente */
+#titreDetailVente{
+	margin-bottom: 40px;
+}
 .blocEntierDetailVente {
 	display: flex;
-	justify-content: center;
-	flex-wrap: nowrap;
 	flex-direction: column;
+	margin: auto 35%;
+}
+
+.blocDouble{
+	display: flex;
+	margin-top: 10px;
+}
+.blocNom{
+	width: 50%;
+}
+.blocContenu{
+	width: 100%;
+}
+.blocContenu #prix{
+	 width: 50px;
+    height: 25px;
+    border-color: black;
+}
+.blocContenu #encherir{
+	padding: 14px;
+    margin-left: 20px;
+}
+.blocDouble form{
+	width: 100%;
+    display: flex;
+    align-items: center;
+}
+.blocContenu p, .blocNom p{
+    margin: 0;
 }
