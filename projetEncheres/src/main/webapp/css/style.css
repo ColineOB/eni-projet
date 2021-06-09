@@ -3,7 +3,6 @@
  * Copyright 2013-2017 Start Bootstrap
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-4-col-portfolio/blob/master/LICENSE)
  */
-
 * {
 	box-sizing: border-box;
 }
@@ -11,7 +10,7 @@
 html {
 	height: 100%;
 }
-	
+
 body {
 	min-height: 84%;
 	max-height: 100%;
@@ -46,7 +45,7 @@ section {
 h1 {
 	text-align: center;
 }
-    
+
 footer {
 	position: absolute;
 	bottom: 0;
@@ -59,107 +58,115 @@ footer {
 }
 /*********************/
 
-
 /* JSP Accueil */
 .section_accueil {
 	margin: 150px 20% 0;
 }
 
-#form_search {
-	display: flex;
+.div_global_search {
+	margin-bottom: 50px;
+}
+
+.div_global_search h3 {
+	margin-bottom: 20px;
+}
+
+#article-search {
+	width: 100%;
+	border-radius: 10px;
+	border-color: black;
+	margin-bottom: 15px;
 }
 /*********************/
 
-
 /* JSP Inscription */
-.inscription{
+.inscription {
 	display: flex;
 	flex-wrap: wrap;
 	margin: 0 auto;
 }
 
-.inscription #gauche{
+.inscription #gauche {
 	position: relative;
 	width: 200px;
 }
 
-.inscription #droite{
+.inscription #droite {
 	position: relative;
 	width: 200px;
 }
 
-.inscription #bouton{
+.inscription #bouton {
 	position: absolute;
 	top: 400px;
 	right: center;
-  	}
-/*********************/		
-
+}
+/*********************/
 
 /* JSP Connexion */
-.messageErreur{
+.messageErreur {
 	text-align: center;
 	color: red;
 	margin-bottom: 10px;
 	font-weight: bold;
 }
-    
-.blocEntierConnexion{
+
+.blocEntierConnexion {
 	display: flex;
 	justify-content: center;
 	flex-wrap: nowrap;
 }
 
 .blocEntierConnexion form {
-    -webkit-logical-width: 300px;
-/* 		    -ms-logical-width: 310px; */	    
+	-webkit-logical-width: 300px;
+	/* 		    -ms-logical-width: 310px; */
 }
 
-.blocIdentifiant{
+.blocIdentifiant {
 	display: flex;
-  		justify-content: space-between;
-  		margin-bottom: 15px;
+	justify-content: space-between;
+	margin-bottom: 15px;
 }
 
-.blocPassword{
+.blocPassword {
 	display: flex;
-  		justify-content: space-between;
-  		margin-bottom: 15px;
+	justify-content: space-between;
+	margin-bottom: 15px;
 }
 
-.blocSubmitSouvenirOublie{
+.blocSubmitSouvenirOublie {
 	display: flex;
 	margin-bottom: 15%;
-  		justify-content: space-between;
+	justify-content: space-between;
 }
 
-.blocSouvenir label{
+.blocSouvenir label {
 	margin-bottom: 0;
 }
 
-.blocSouvenirOublie{
+.blocSouvenirOublie {
 	flex-direction: column;
 	text-align: right;
 }
 
-.boutonConnexion input{
+.boutonConnexion input {
 	padding: 10px 17px
 }
 
-.blocCreerCompte input{
+.blocCreerCompte input {
 	width: 100%;
-  		padding: 20px;
+	padding: 20px;
 }
 /*********************/
 
 /* JSP NouvelleVente */
-.blocEntierNouvelleVente{
+.blocEntierNouvelleVente {
 	display: flex;
 	justify-content: center;
 	flex-wrap: nowrap;
-}	
+}
 /* JSP Detail Vente */
-.blocEntierDetailVente{
+.blocEntierDetailVente {
 	display: flex;
 	justify-content: center;
 	flex-wrap: nowrap;
