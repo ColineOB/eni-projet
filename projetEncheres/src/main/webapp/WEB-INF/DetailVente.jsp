@@ -12,23 +12,81 @@
 	<body>
 		<%@ include file="./fragments/headerConnect.jsp" %>
 		<section>
-			<div class="containerDetailVente">
-				<div class="blocEntierDetailVente">
-					<p>Nom de l'article: ${article.nomArticle}</p>
-					<p>Description : ${article.description}</p>
-					<p>Categorie : ${categorie.libelle}</p>
-					<p>Meilleur offre : ${article.prixVente}</p>
-					<p>Mise à prix : ${article.miseAPrix}</p>
-					<p>Fin de l'enchère : ${article.dateFinEncheres}</p>
-					<p>Retrait : ${user.rue}<p>${user.codePostal}</p><p>${user.ville}</p></p>
-					<p>Vendeur : ${sessionScope['utilisateur'].pseudo}</p>
+			<h1 id="titreDetailVente">Détail Vente</h1>
+			<div class="blocEntierDetailVente">
+				<div class="blocContenu">
+					<h4>${article.nomArticle}</h4>
+				</div>
+				<div class="blocDouble">
+					<div class="blocNom">	
+						<p>Description : </p>
+					</div>
+					<div class="blocContenu">
+						<p>${article.description}</p>
+					</div>
+				</div>
+				<div class="blocDouble">
+					<div class="blocNom">	
+						<p>Categorie : </p>
+					</div>
+					<div class="blocContenu">
+						<p>${categorie.libelle}</p>
+					</div>
+				</div>
+				<div class="blocDouble">
+					<div class="blocNom">	
+						<p>Meilleur offre : </p>
+					</div>
+					<div class="blocContenu">
+						<p>${article.prixVente}</p>
+					</div>
+				</div>
+				<div class="blocDouble">
+					<div class="blocNom">	
+						<p>Mise à prix : </p>
+					</div>
+					<div class="blocContenu">
+						<p>${article.miseAPrix}</p>
+					</div>
+				</div>
+				<div class="blocDouble">
+					<div class="blocNom">	
+						<p>Fin de l'enchère : </p>
+					</div>
+					<div class="blocContenu">
+						<p>${article.dateFinEncheres}</p>
+					</div>
+				</div>
+				<div class="blocDouble">
+					<div class="blocNom">
+						<p>Retrait : </p>
+					</div>
+					<div class="blocContenu">
+						<p>${user.rue}</p>
+						<p>${user.codePostal} ${user.ville}</p>
+					</div>
+				</div>
+				<div class="blocDouble">
+					<div class="blocNom">
+						<p>Vendeur : </p>
+					</div>
+					<div class="blocContenu">
+						<p>${user.pseudo}</p>
+					</div>
+				</div>
+				<div class="blocDouble">
 					<form method="post" action="<%=request.getContextPath() %>/ServletDetailVente">
-						<label for="prix">Ma proposition  : </label>
-						<input type="number" name="prix" id="prix" min="1">
-						<input type="submit" value="Enchérir">
+						<div class="blocNom">
+							<label for="prix">Ma proposition  : </label>
+						</div>
+						<div class="blocContenu">
+							<input type="number" name="prix" id="prix" min="${article.prixVente}">
+							<input type="submit" id="encherir" value="Enchérir">
+						</div>
 					</form>
 				</div>
 			</div>
 		</section>
+		<%@ include file="./fragments/footer.html" %>
 	</body>
 </html>

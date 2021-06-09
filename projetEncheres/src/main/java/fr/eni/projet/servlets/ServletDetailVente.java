@@ -29,7 +29,7 @@ public class ServletDetailVente extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
-
+		
 		int noArticle = Integer.parseInt(request.getParameter("no"));
 		ArticleManager articleManager = new ArticleManager();
 		ArticleVendu article = null;
@@ -51,8 +51,7 @@ public class ServletDetailVente extends HttpServlet {
 		request.setAttribute("user", user);
 		rd = request.getRequestDispatcher("/WEB-INF/DetailVente.jsp");
 		rd.forward(request, response);
-		rd = request.getRequestDispatcher("/WEB-INF/DetailVente.jsp");
-		rd.forward(request, response);
+		
 	}
 
 	/**
