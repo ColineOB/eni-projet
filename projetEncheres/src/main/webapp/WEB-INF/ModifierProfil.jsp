@@ -3,15 +3,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<jsp:include page="/WEB-INF/fragments/head.jsp"></jsp:include>
 </head>
-<jsp:include page="/WEB-INF/fragments/headerConnect.jsp"></jsp:include>
+
 <body>
-	<%@ include file="./fragments/headerWithoutConnect.html" %>
+	<%@ include file="./fragments/headerConnect.jsp" %>
 	<section>
 	<h1>Mon profil</h1>
-	<form action="<%=request.getContextPath() %>/ServletModifierProfil">" method="post" class="profil">
+	<form method="post" action="<%=request.getContextPath() %>/ServletModifierProfil" class="profil">
 		<div class="inscription">
 			<div id="gauche">
 					<label for="pseudo">Pseudo:</label>
@@ -39,11 +38,12 @@
 			</div>
 			<div id="bouton">
 				<input type="submit" value="Modifier">
-				<input type="button" value="Supprimer mon compte">
 			</div>
 		</div>
 	</form>
-	
+	<form method="post" action="<%=request.getContextPath() %>/ServletSupprimerProfil" class="supprProfil">
+	<input type="submit" name="Supprimer" value="Supprimer mon compte">
+	</form>
 	</section>
 </body>
 </html>
