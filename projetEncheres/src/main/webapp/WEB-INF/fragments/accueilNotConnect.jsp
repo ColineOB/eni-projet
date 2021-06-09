@@ -19,7 +19,7 @@
 					<input type="search" id="article-search" name="article-search" aria-label="Rechercher parmis les enchères" placeholder="🔍 Nom de l'article">
 				</div>
 				<div class="col-md-12">
-					<label for="selectCategorie">Categorie</label>
+					<label for="selectCategorie">Catégorie : </label>
 					<select name="selectCategorie" id="selectCategorie">
 						<c:forEach var="c" items="${categorie}">
 							<c:choose>
@@ -40,9 +40,9 @@
 		</form>
 	</div>
 	
-	<div class="row div_global_articles">
+	<div class="div_global_articles">
 		<c:forEach var="e" items="${enchere}">
-			<div class="col-md-6 div_articles">				
+			<div class="div_articles">
 				<h4><a>${e.article.nomArticle}</a></h4>
 				<p>Prix : ${e.montant_encheres} points</p>
 				<p>Fin de l'enchère : ${e.dateEncheres}</p>

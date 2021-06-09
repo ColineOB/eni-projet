@@ -17,5 +17,9 @@ import fr.eni.projet.bo.Enchere;
 public interface EnchereDAO {
 	
 	public List<Enchere> selectAllEnchere() throws BusinessException;
+	
+	public List<Enchere> selectByCategorieEnchere() throws BusinessException;
+	
+	public List<Enchere> selectByMotCleEnchere() throws BusinessException;
 
 }
