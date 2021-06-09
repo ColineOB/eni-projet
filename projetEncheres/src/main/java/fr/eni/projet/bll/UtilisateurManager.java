@@ -24,10 +24,21 @@ public class UtilisateurManager {
 	}
 
 
-	public Utilisateur modifierUtilisateur(String pseudo, String nom, String prenom, String email, String tel,
-			String rue, String codePostal, String ville, String mdp, int i, boolean b) throws BusinessException, SQLException {
+	public Utilisateur modifierUtilisateur(int no_utilisateur, String pseudo, String nom, String prenom, String email, String tel,
+			String rue, String codePostal, String ville, String mdp) throws BusinessException, SQLException {
 		// TODO Auto-generated method stub
-		return null;
+		Utilisateur user = new Utilisateur();
+		user.setNoUtilisateur(no_utilisateur);
+		user.setPseudo(pseudo);
+		user.setNom(nom);
+		user.setPrenom(prenom);
+		user.setEmail(email);
+		user.setTelephone(tel);
+		user.setRue(rue);
+		user.setCodePostal(codePostal);
+		user.setVille(ville);
+		user.setMotDePasse(mdp);
+		return this.utilisateurDAO.modifierUtilisateur(user);
 	}
 
 
