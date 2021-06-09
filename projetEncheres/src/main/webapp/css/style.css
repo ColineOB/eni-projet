@@ -169,6 +169,7 @@ footer {
 #titreDetailVente{
 	margin-bottom: 40px;
 }
+
 .blocEntierDetailVente {
 	display: flex;
 	flex-direction: column;
