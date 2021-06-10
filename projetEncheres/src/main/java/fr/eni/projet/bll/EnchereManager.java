@@ -3,9 +3,12 @@
  */
 package fr.eni.projet.bll;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.projet.BusinessException;
+import fr.eni.projet.bo.ArticleVendu;
 import fr.eni.projet.bo.Enchere;
 import fr.eni.projet.dal.DAOFactory;
 import fr.eni.projet.dal.EnchereDAO;
@@ -37,6 +40,36 @@ private EnchereDAO enchereDAO;
 	public List<Enchere> selectionnerEncheresParMotCle(String motCle) throws BusinessException
 	{
 		return this.enchereDAO.selectByMotCleEnchere(motCle);
+	}
+	
+	public List<Enchere> selectionnerEncheresParEtat(String etatVente) throws BusinessException
+	{
+//		return this.enchereDAO.selectByStateEnchere();
+		List<Enchere> listeEncheres = this.enchereDAO.selectByStateEnchere();
+		List<Enchere> listeEncheresDate = new ArrayList<>();
+		LocalDateTime dateDebutEncheres;
+		LocalDateTime dateFinEncheres;
+		
+		for (Enchere enchere : listeEncheres) {
+			dateDebutEncheres = enchere.getArticle().getDateDebutEncheres();
+			dateFinEncheres = enchere.getArticle().getDateFinEncheres();
+			LocalDateTime dateActuelle = LocalDateTime.now();
+			String etatVenteCourante;
+			
+			if (dateFinEncheres.isBefore(dateActuelle)) {
+				etatVenteCourante = "termine"; 
+			} else if (dateDebutEncheres.isAfter(dateActuelle)) {
+				etatVenteCourante = "non_debute";
+			} else {
+				etatVenteCourante = "en_cours";
+			}
+			
+			if (etatVente.equalsIgnoreCase(etatVenteCourante)) {
+				listeEncheresDate.add(enchere);
+			}
+		}
+		
+		return listeEncheresDate;
 	}
 	
 }

@@ -67,19 +67,19 @@
 						</label>
 						<div class="check-btns">
 							<div class="">
-								<input class="check-input" type="checkbox" value="ventesCheck" id="ventesEnCours">
+								<input class="check-input" type="checkbox" name="venteCheck" value="en_cours" id="ventesEnCours">
 								<label class="check-label" for="ventesEnCours">
 							    	Mes ventes en cours
 							  	</label>
 							</div>
 							<div class="">
-							  	<input class="check-input" type="checkbox" value="ventesCheck" id="ventesNonDebutees">
+							  	<input class="check-input" type="checkbox" name="venteCheck" value="non_debute" id="ventesNonDebutees">
 							  	<label class="check-label" for="ventesNonDebutees">
 							    	Ventes non débutées
 							  	</label>
 							</div>
 							<div class="">
-							  	<input class="check-input" type="checkbox" value="ventesCheck" id="ventesTerminees">
+							  	<input class="check-input" type="checkbox" name="venteCheck" value="termine" id="ventesTerminees">
 							  	<label class="check-label" for="ventesTerminees">
 							    	Ventes terminées
 							  	</label>
