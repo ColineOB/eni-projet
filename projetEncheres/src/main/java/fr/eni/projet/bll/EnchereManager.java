@@ -29,14 +29,14 @@ private EnchereDAO enchereDAO;
 		return this.enchereDAO.selectAllEnchere();
 	}
 	
-	public List<Enchere> selectionnerEncheresParCategorie() throws BusinessException
+	public List<Enchere> selectionnerEncheresParCategorie(int id) throws BusinessException
 	{
-		return this.enchereDAO.selectByCategorieEnchere();
+		return this.enchereDAO.selectByCategorieEnchere(id);
 	}
 	
-	public List<Enchere> selectionnerEncheresParMotCle() throws BusinessException
+	public List<Enchere> selectionnerEncheresParMotCle(String motCle) throws BusinessException
 	{
-		return this.enchereDAO.selectByMotCleEnchere();
+		return this.enchereDAO.selectByMotCleEnchere(motCle);
 	}
 	
 }

@@ -14,7 +14,7 @@ public class Enchere implements Serializable {
 	private ArticleVendu article;
 	private Date dateEncheres;
 	private int montant_encheres;
-	
+
 	/**
 	 * Constructeur
 	 *
@@ -129,6 +129,26 @@ public class Enchere implements Serializable {
 		builder.append(montant_encheres);
 		builder.append("]");
 		return builder.toString();
+	}
+
+	/**
+	 * {@inheritDoc}
+	 *
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+
+		if (obj instanceof Enchere) {
+			Enchere tmp = (Enchere) obj;
+
+			if (tmp.dateEncheres.equals(this.dateEncheres) && tmp.montant_encheres == this.montant_encheres
+					&& tmp.article.getNomArticle().equals(this.article.getNomArticle())) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 
 }
