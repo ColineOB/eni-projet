@@ -27,18 +27,6 @@ public class ServletNouvelleVente extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	RequestDispatcher rd = null;
 	
-
-//	@Override
-//	public void init() throws ServletException {
-//		/*Ou liste écrite dans le fichier web.xml*/
-//		String chaineCategorie = this.getServletContext().getInitParameter("CATEGORIESNOUVELLEVENTE");
-//		List<String> categories = Arrays.asList(chaineCategorie.split(","));
-//		
-//		
-//		this.getServletContext().setAttribute("categories", categories);
-//		super.init();
-//	}
-
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CategorieManager categorieManager = new CategorieManager();

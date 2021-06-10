@@ -11,6 +11,8 @@ import fr.eni.projet.bo.ArticleVendu;
 public class ArticleDAOJdbcImpl implements ArticleDAO {
 	private static final String INSERT_ARTICLE = "insert into ARTICLES_VENDUS(nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, "
 			+ "prix_vente, no_utilisateur, no_categorie) values(?,?,?,?,?,?,?,?)";
+	private static final String UPDATE_ARTICLE = "update ARTICLES_VENDUS(nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, "
+			+ "prix_vente, no_utilisateur, no_categorie) values(?,?,?,?,?,?,?,?)";
 	private static final String SELECT_DETAIL_VENTE = " SELECT a.no_article, a.nom_article, a.description, a.date_debut_encheres, a.date_fin_encheres, "
 			+ "a.prix_initial, a.prix_vente, a.no_utilisateur, a.no_categorie" + " FROM ARTICLES_VENDUS a "
 			+ " WHERE a.no_article=?";
@@ -56,6 +58,43 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			throw businessException;
 		}
 
+	}
+	
+	@Override
+	public ArticleVendu update(ArticleVendu article) throws BusinessException {
+		if (article == null) {
+			BusinessException businessException = new BusinessException();
+			businessException.ajouterErreur(CodesResultatDAL.UPDATE_ARTICLE_ECHEC);
+			throw businessException;
+		}
+
+		try (Connection cnx = ConnectionProvider.getConnection()) {
+			try {
+				cnx.setAutoCommit(false);
+				PreparedStatement pstmt = cnx.prepareStatement(UPDATE_ARTICLE);
+				pstmt.setString(1, article.getNomArticle());
+				pstmt.setString(2, article.getDescription());
+				pstmt.setTimestamp(3, java.sql.Timestamp.valueOf(article.getDateDebutEncheres()));
+				pstmt.setTimestamp(4, java.sql.Timestamp.valueOf(article.getDateFinEncheres()));
+				pstmt.setInt(5, article.getMiseAPrix());
+				pstmt.setInt(6, article.getPrixVente());
+				pstmt.setInt(7, article.getNoUtilisateur());
+				pstmt.setInt(8, article.getNoCategorie());
+				pstmt.executeUpdate();
+				pstmt.close();
+				cnx.commit();
+			} catch (Exception e) {
+				e.printStackTrace();
+				cnx.rollback();
+				throw e;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			BusinessException businessException = new BusinessException();
+			businessException.ajouterErreur(CodesResultatDAL.INSERT_ARTICLE_ECHEC);
+			throw businessException;
+		}
+		return article;
 	}
 
 	@Override
@@ -135,4 +174,5 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 			String nomArticle = article.getNomArticle();
 			return nomArticle;
 	}
+
 }

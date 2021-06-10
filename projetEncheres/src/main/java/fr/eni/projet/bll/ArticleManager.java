@@ -16,7 +16,6 @@ public class ArticleManager {
 
 
 	public ArticleVendu ajouterNouvelArticle(String nomArticle, String description, LocalDateTime dateDebutEncheres, LocalDateTime dateFinEncheres,
-
 			int miseAPrix, int noUtilisateur, int noCategorie)
 			throws BusinessException {
 		BusinessException exception = new BusinessException();
@@ -46,6 +45,37 @@ public class ArticleManager {
 		return article;
 	}
 
+	public ArticleVendu modifierNouvelArticle(String nomArticle, String description, LocalDateTime dateDebutEncheres, LocalDateTime dateFinEncheres,
+			int miseAPrix, int noUtilisateur, int noCategorie)
+			throws BusinessException {
+		BusinessException exception = new BusinessException();
+
+		ArticleVendu article = null;
+
+		this.impossibleDateInferieurDateJour(dateDebutEncheres, exception);
+		this.impossibleDateInferieurDateJour(dateFinEncheres, exception);
+		this.impossibleDateFinInferieurDateDebut(dateDebutEncheres, dateFinEncheres, exception);
+		this.stringNeDoitPasEtreVide(nomArticle, exception);
+		this.stringNeDoitPasEtreVide(description, exception);
+		this.stringNeDoitPasEtreVide(nomArticle, exception);
+
+		if (!exception.hasErreurs()) {
+			article = new ArticleVendu();
+			article.setNomArticle(nomArticle);
+			article.setDescription(description);
+			article.setDateDebutEncheres(dateDebutEncheres);
+			article.setDateFinEncheres(dateFinEncheres);
+			article.setMiseAPrix(miseAPrix);
+			article.setNoUtilisateur(noUtilisateur);
+			article.setNoCategorie(noCategorie);
+			this.articleDAO.update(article);
+		} else {
+			throw exception;
+		}
+		return article;
+	}
+
+	
 	private void impossibleDateInferieurDateJour(LocalDateTime date, BusinessException businessException) {
 		LocalDateTime dateDuJour = LocalDateTime.now();
 		if (date == null || date.isAfter(dateDuJour)) {
