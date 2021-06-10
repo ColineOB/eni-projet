@@ -14,6 +14,8 @@ public interface ArticleDAO {
 	 * @throws BusinessException
 	 */
 	public void insert(ArticleVendu article) throws BusinessException;
+	
+	public ArticleVendu update(ArticleVendu article) throws BusinessException;
 
 	public List<ArticleVendu> select() throws BusinessException;
 

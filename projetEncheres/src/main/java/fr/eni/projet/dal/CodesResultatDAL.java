@@ -28,9 +28,9 @@ public abstract class CodesResultatDAL {
 	 */
 	public static final int LECTURE_DETAIL_UTILISATEUR_ECHEC = 10004;
 	/**
-//	 * Erreur à la suppression d'un article
-//	 */
-//	public static final int SUPPRESSION_ARTICLE_ERREUR = 10005;
+	 * Erreur à la mise à jour d'un article
+	 */
+	public static final int UPDATE_ARTICLE_ECHEC = 10005;
 //	/**
 //	 * Erreur à la suppression d'une liste
 //	 */
