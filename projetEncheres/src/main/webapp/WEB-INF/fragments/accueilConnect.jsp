@@ -97,7 +97,7 @@
 	<div class="div_global_articles">
 		<c:forEach var="e" items="${enchere}">
 			<div class="col-md-6 div_articles">				
-				<h4><a href="<%=request.getContextPath() %>/ServletDetailVente?no=${e.article.noArticle}">${e.article.nomArticle}</a></h4>
+				<h4><a href="<%=request.getContextPath() %>/ServletRedirectionModifDetailVente?no=${e.article.noArticle}">${e.article.nomArticle}</a></h4>
 				<p>Prix : ${e.montant_encheres} points</p>
 				<p>Fin de l'enchère : ${e.dateEncheres}</p>
 				<p>Vendeur : <a href="<%=request.getContextPath() %>/ServletModifierProfil?no=${e.user.noUtilisateur}">${e.user.pseudo}</a></p>
