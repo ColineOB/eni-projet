@@ -87,7 +87,8 @@ public class ServletModifierProfil extends HttpServlet {
 		UtilisateurManager utilisateurManager = new UtilisateurManager();
        	try {
        		utilisateur = utilisateurManager.modifierUtilisateur(no_utilisateur, pseudo, nom, prenom, email, tel, rue, codePostal, ville, mdp);
-       		RequestDispatcher rd = request.getRequestDispatcher("/ServletModifierProfil");
+       		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/ModifierProfil.jsp");
+       		session.setAttribute("utilisateur", utilisateur);
 			rd.forward(request, response);
 		} catch (BusinessException | SQLException e) {
 			//Sinon je retourne à la page d'ajout pour indiquer les problèmes:
