@@ -21,5 +21,7 @@ public interface EnchereDAO {
 	public List<Enchere> selectByCategorieEnchere(int id) throws BusinessException;
 	
 	public List<Enchere> selectByMotCleEnchere(String motCle) throws BusinessException;
+	
+	public List<Enchere> selectByStateEnchere() throws BusinessException;
 
 }

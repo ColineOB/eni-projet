@@ -5,10 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.projet.BusinessException;
-import fr.eni.projet.bll.ArticleManager;
 import fr.eni.projet.bll.CategorieManager;
 import fr.eni.projet.bll.EnchereManager;
-import fr.eni.projet.bo.ArticleVendu;
 import fr.eni.projet.bo.Enchere;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -24,15 +22,6 @@ import jakarta.servlet.http.HttpServletResponse;
 public class ServletAccueil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	RequestDispatcher rd = null;
-	
-//	@Override
-//	public void init() throws ServletException {
-//		String chaineCategorie = this.getServletContext().getInitParameter("CATEGORIESACCUEIL");
-//		List<String> categories = Arrays.asList(chaineCategorie.split(","));
-//		
-//		this.getServletContext().setAttribute("categories", categories);
-//		super.init();
-//	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -63,6 +52,7 @@ public class ServletAccueil extends HttpServlet {
 		CategorieManager categorieManager = new CategorieManager();
 		EnchereManager enchereManager = new EnchereManager();
 		int noCategorie = Integer.parseInt(request.getParameter("selectCategorie"));
+		String etatVente = (String) request.getParameter("venteCheck");
 		String motCle = request.getParameter("article-search");
 		String motCle2 = "%"+motCle+"%";
 		List<Enchere> listeEncheres;
@@ -70,13 +60,15 @@ public class ServletAccueil extends HttpServlet {
 		
 		try {
 			request.setAttribute("categorie", categorieManager.selectionnerCategories());
-//			request.setAttribute("enchere", enchereManager.selectionnerEncheres());
 			listeEncheres = enchereManager.selectionnerEncheresParMotCle(motCle2);
 			listeEncheres.retainAll(enchereManager.selectionnerEncheresParCategorie(noCategorie));
+			
+			if (etatVente != null) {
+				listeEncheres.retainAll(enchereManager.selectionnerEncheresParEtat(etatVente));
+			}
+			
 			request.setAttribute("enchere", listeEncheres);
-//			request.setAttribute("enchere", enchereManager.selectionnerEncheresParMotCle(motCle2));
-//			request.setAttribute("enchere", enchereManager.selectionnerEncheresParCategorie(noCategorie));
-			System.out.println(motCle2);
+			System.out.println(etatVente);
 		} catch (BusinessException e) {
 			request.setAttribute("listeCodesErreur",e.getListeCodesErreur());
 			e.printStackTrace();
