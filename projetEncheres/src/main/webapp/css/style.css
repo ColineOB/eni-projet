@@ -33,9 +33,64 @@ body {
 	font-size: 30px;
 }
 
+#logo a > img {
+	transition: transform .5s;
+}
+
 #logo a:hover {
 	text-decoration: none;
 	color: lightgrey;
+}
+
+#logo a:hover > img {
+	transform: rotate(-20deg);
+	animation: 3s linear 1s transform;
+	transition: transform .5s;
+}
+
+#logo a img:last-of-type,
+.copy_footer img:last-of-type {
+	transform: scaleX(-1);
+}
+
+#logo a:hover > img:last-of-type {
+	transform: scaleX(-1) rotate(-20deg);
+	animation: 3s linear 1s transform;
+	transition: transform .5s;
+}
+
+#div_nav a {
+	margin: 10px;
+	text-decoration: none;
+}
+
+#div_nav a:first-child {
+	margin-left: 0; 
+}
+
+#div_nav a:last-child {
+	margin-right: 0; 
+}
+
+#div_nav a > img {
+	transition: transform .5s;
+}
+
+#div_nav a:hover > img {
+	transform: translateY(-10px) rotate(-20deg);
+	animation: 3s linear 1s transform;
+	transition: transform .5s;
+}
+
+#div_nav a img:last-of-type,
+.copy_footer img:last-of-type {
+	transform: scaleX(-1);
+}
+
+#div_nav a:hover > img:last-of-type {
+	transform: translateY(-10px) scaleX(-1) rotate(-20deg);
+	animation: 3s linear 1s transform;
+	transition: transform .5s;
 }
 
 section {
@@ -52,10 +107,6 @@ footer {
 	right: 0;
 	left: 0;
 }
-
-#selectCategorie {
-	text-transform: capitalize;
-}
 /*********************/
 
 /* JSP Accueil */
@@ -71,6 +122,11 @@ footer {
 	margin-bottom: 20px;
 }
 
+#form_search {
+	align-items: center;
+	justify-content: space-between;
+}
+
 #article-search {
 	width: 100%;
 	border-radius: 10px;
@@ -78,16 +134,42 @@ footer {
 	margin-bottom: 15px;
 }
 
+.div_categories_accueil {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.div_categories_accueil label {
+	width: 30%;
+	margin-bottom: 0;
+}
+
+#selectCategorie {
+	text-transform: capitalize;
+	width: 70%;
+}
+
 .div_btn_choice {
 	display: flex;
+	margin-top: 20px;
+	justify-content: space-between;
 }
 
 .check-btns {
-	margin-left: 20px;
+	margin-left: 30px;
 }
 
 .check-input {
 	margin-right: 10px;
+}
+
+.div_btn_search {
+	text-align: center;
+}
+
+#btn_search {
+	padding: 30px 50px;
 }
 
 .div_global_articles {
@@ -99,6 +181,7 @@ footer {
 .div_articles {
 	border: 1px solid black;
 	min-width: 40%;
+	margin-bottom: 20px;
 }
 /*********************/
 
