@@ -78,6 +78,18 @@ footer {
 	margin-bottom: 15px;
 }
 
+.div_btn_choice {
+	display: flex;
+}
+
+.check-btns {
+	margin-left: 20px;
+}
+
+.check-input {
+	margin-right: 10px;
+}
+
 .div_global_articles {
 	display: flex;
 	justify-content: space-between;
