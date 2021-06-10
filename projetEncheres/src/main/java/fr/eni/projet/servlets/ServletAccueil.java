@@ -62,13 +62,21 @@ public class ServletAccueil extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		CategorieManager categorieManager = new CategorieManager();
 		EnchereManager enchereManager = new EnchereManager();
-		
+		int noCategorie = Integer.parseInt(request.getParameter("selectCategorie"));
+		String motCle = request.getParameter("article-search");
+		String motCle2 = "%"+motCle+"%";
+		List<Enchere> listeEncheres;
 		List<Integer> listeCodesErreur=new ArrayList<>();
 		
 		try {
 			request.setAttribute("categorie", categorieManager.selectionnerCategories());
-			request.setAttribute("enchere", enchereManager.selectionnerEncheres());
-			request.setAttribute("enchere", enchereManager.selectionnerEncheresParMotCle());
+//			request.setAttribute("enchere", enchereManager.selectionnerEncheres());
+			listeEncheres = enchereManager.selectionnerEncheresParMotCle(motCle2);
+			listeEncheres.retainAll(enchereManager.selectionnerEncheresParCategorie(noCategorie));
+			request.setAttribute("enchere", listeEncheres);
+//			request.setAttribute("enchere", enchereManager.selectionnerEncheresParMotCle(motCle2));
+//			request.setAttribute("enchere", enchereManager.selectionnerEncheresParCategorie(noCategorie));
+			System.out.println(motCle2);
 		} catch (BusinessException e) {
 			request.setAttribute("listeCodesErreur",e.getListeCodesErreur());
 			e.printStackTrace();
