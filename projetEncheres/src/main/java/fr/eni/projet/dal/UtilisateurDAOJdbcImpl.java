@@ -13,9 +13,7 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 	private static final String SELECT_VERIF_PSEUDO = "SELECT * FROM utilisateurs where pseudo=? and mot_de_passe=?";
 	private static final String SELECT_VERIF_EMAIL = "SELECT * FROM utilisateurs where email=? and mot_de_passe=?";
 	private static final String SELECT_BY_ID = "SELECT * FROM utilisateurs where no_utilisateur=?";
-	private static final String DELETE_UTILISATEUR = "DELETE FROM UTILISATEURS where no_utilisateur = ?";
-	private static final String DELETE_ARTICLES_VENDUS = "DELETE FROM ARTICLES_VENDUS where  no_utilisateur = ?";
-	private static final String DELETE_ENCHERES = "DELETE FROM ENCHERES where  no_utilisateur = ?";
+	private static final String DELETE_UTILISATEUR = "DELETE FROM UTILISATEURS where no_utilisateur = ? ";
 	private static final String UPDATE_UTILISATEUR = "update UTILISATEURS set pseudo =?, nom =?, prenom =?, email=?, telephone=?, rue=?, code_postal=?, ville=?, mot_de_passe=? where no_utilisateur = ?";
 
   @Override
@@ -129,14 +127,8 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 		try {  
 			
 	        Connection cnx = ConnectionProvider.getConnection();
-	        PreparedStatement pstmt = cnx.prepareStatement(DELETE_ENCHERES);
-	        PreparedStatement pstmt2 = cnx.prepareStatement(DELETE_UTILISATEUR);
-	        PreparedStatement pstmt3 = cnx.prepareStatement(DELETE_ARTICLES_VENDUS);
-	        pstmt.setInt(1, noUtilisateur);
-	        pstmt2.setInt(1, noUtilisateur);
+	        PreparedStatement pstmt3 = cnx.prepareStatement(DELETE_UTILISATEUR);
 	        pstmt3.setInt(1, noUtilisateur);
-	        pstmt.executeUpdate();
-	        pstmt2.executeUpdate();
 	        pstmt3.executeUpdate();
 
 	    } catch(Exception e) {
