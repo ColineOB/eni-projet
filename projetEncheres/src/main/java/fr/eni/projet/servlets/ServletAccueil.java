@@ -70,12 +70,9 @@ public class ServletAccueil extends HttpServlet {
 		
 		try {
 			request.setAttribute("categorie", categorieManager.selectionnerCategories());
-//			request.setAttribute("enchere", enchereManager.selectionnerEncheres());
 			listeEncheres = enchereManager.selectionnerEncheresParMotCle(motCle2);
 			listeEncheres.retainAll(enchereManager.selectionnerEncheresParCategorie(noCategorie));
 			request.setAttribute("enchere", listeEncheres);
-//			request.setAttribute("enchere", enchereManager.selectionnerEncheresParMotCle(motCle2));
-//			request.setAttribute("enchere", enchereManager.selectionnerEncheresParCategorie(noCategorie));
 			System.out.println(motCle2);
 		} catch (BusinessException e) {
 			request.setAttribute("listeCodesErreur",e.getListeCodesErreur());
