@@ -18,8 +18,8 @@ public interface EnchereDAO {
 	
 	public List<Enchere> selectAllEnchere() throws BusinessException;
 	
-	public List<Enchere> selectByCategorieEnchere() throws BusinessException;
+	public List<Enchere> selectByCategorieEnchere(int id) throws BusinessException;
 	
-	public List<Enchere> selectByMotCleEnchere() throws BusinessException;
+	public List<Enchere> selectByMotCleEnchere(String motCle) throws BusinessException;
 
 }

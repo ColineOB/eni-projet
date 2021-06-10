@@ -28,11 +28,11 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 	private static final String SELECT_BY_CATEGORIE = "SELECT date_enchere, montant_enchere, nom_article, a.no_article, pseudo, u.no_utilisateur FROM ENCHERES e"
 			+ "	LEFT JOIN ARTICLES_VENDUS a ON e.no_article = a.no_article"
 			+ "	LEFT JOIN UTILISATEURS u ON e.no_utilisateur = u.no_utilisateur"
-			+ " WHERE a.no_categorie = ?;";
+			+ " WHERE a.no_categorie = ? OR 1 = ?;";
 	private static final String SELECT_BY_MOT_CLE = "SELECT date_enchere, montant_enchere, nom_article, a.no_article, pseudo, u.no_utilisateur FROM ENCHERES e"
 			+ "	LEFT JOIN ARTICLES_VENDUS a ON e.no_article = a.no_article"
 			+ "	LEFT JOIN UTILISATEURS u ON e.no_utilisateur = u.no_utilisateur"
-			+ " WHERE a.nom_article LIKE ?;";
+			+ " WHERE lower(a.nom_article) LIKE ?;";
 	private static List<Enchere> listeEncheres;
 	private static PreparedStatement pstmt;
 	private static ResultSet rs;
@@ -73,10 +73,12 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 	 * @see fr.eni.projet.dal.EnchereDAO#selectByCategorieEnchere()
 	 */
 	@Override
-	public List<Enchere> selectByCategorieEnchere() throws BusinessException {
+	public List<Enchere> selectByCategorieEnchere(int id) throws BusinessException {
 		listeEncheres = new ArrayList<Enchere>();
         try(Connection cnx = ConnectionProvider.getConnection()) {
             pstmt = cnx.prepareStatement(SELECT_BY_CATEGORIE);
+            pstmt.setInt(1, id);
+            pstmt.setInt(2, id);
             rs = pstmt.executeQuery();
             while(rs.next()) {
             	Utilisateur user = new Utilisateur();
@@ -103,10 +105,11 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 	 * @see fr.eni.projet.dal.EnchereDAO#selectByMotCleEnchere()
 	 */
 	@Override
-	public List<Enchere> selectByMotCleEnchere() throws BusinessException {
+	public List<Enchere> selectByMotCleEnchere(String motCle) throws BusinessException {
 		listeEncheres = new ArrayList<Enchere>();
         try(Connection cnx = ConnectionProvider.getConnection()) {
             pstmt = cnx.prepareStatement(SELECT_BY_MOT_CLE);
+            pstmt.setString(1, motCle);
             rs = pstmt.executeQuery();
             while(rs.next()) {
             	Utilisateur user = new Utilisateur();
