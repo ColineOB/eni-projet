@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     <%@page import="fr.eni.projet.bo.ArticleVendu"%>
     <%@page import="fr.eni.projet.bo.Categorie"%>
     <%@page import="fr.eni.projet.bo.Utilisateur"%>
@@ -55,8 +54,7 @@
 						<p>Fin de l'enchère : </p>
 					</div>
 					<div class="blocContenu">
-						<p><fmt:parseDate value="${article.dateFinEncheres}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
-						<fmt:formatDate pattern="dd.MM.yyyy HH:mm" value="${ parsedDateTime }" /></p>
+						<p>${article.dateFinEncheres}</p>
 					</div>
 				</div>
 				<div class="blocDouble">

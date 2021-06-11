@@ -26,15 +26,18 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 			+ " u.no_utilisateur FROM ENCHERES e"
 			+ "	LEFT JOIN ARTICLES_VENDUS a ON e.no_article = a.no_article"
 			+ "	LEFT JOIN UTILISATEURS u ON e.no_utilisateur = u.no_utilisateur;";
-	private static final String SELECT_BY_CATEGORIE = "SELECT date_enchere, montant_enchere, nom_article, a.no_article, pseudo, u.no_utilisateur FROM ENCHERES e"
+	private static final String SELECT_BY_CATEGORIE = "SELECT date_enchere, montant_enchere, nom_article, date_debut_encheres, date_fin_encheres, a.no_article, pseudo,"
+			+ " u.no_utilisateur FROM ENCHERES e"
 			+ "	LEFT JOIN ARTICLES_VENDUS a ON e.no_article = a.no_article"
 			+ "	LEFT JOIN UTILISATEURS u ON e.no_utilisateur = u.no_utilisateur"
 			+ " WHERE a.no_categorie = ? OR 1 = ?;";
-	private static final String SELECT_BY_MOT_CLE = "SELECT date_enchere, montant_enchere, nom_article, a.no_article, pseudo, u.no_utilisateur FROM ENCHERES e"
+	private static final String SELECT_BY_MOT_CLE = "SELECT date_enchere, montant_enchere, nom_article, a.no_article, date_debut_encheres, date_fin_encheres, pseudo,"
+			+ " u.no_utilisateur FROM ENCHERES e"
 			+ "	LEFT JOIN ARTICLES_VENDUS a ON e.no_article = a.no_article"
 			+ "	LEFT JOIN UTILISATEURS u ON e.no_utilisateur = u.no_utilisateur"
 			+ " WHERE lower(a.nom_article) LIKE ?;";
-	private static final String SELECT_BY_STATE = "SELECT date_enchere, montant_enchere, nom_article, a.no_article, etat_vente, pseudo, u.no_utilisateur FROM ENCHERES e"
+	private static final String SELECT_BY_STATE = "SELECT date_enchere, montant_enchere, nom_article, a.no_article, date_debut_encheres, date_fin_encheres, etat_vente,"
+			+ " pseudo, u.no_utilisateur FROM ENCHERES e"
 			+ "	LEFT JOIN ARTICLES_VENDUS a ON e.no_article = a.no_article"
 			+ "	LEFT JOIN UTILISATEURS u ON e.no_utilisateur = u.no_utilisateur";
 	private static List<Enchere> listeEncheres;

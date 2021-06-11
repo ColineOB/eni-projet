@@ -13,14 +13,14 @@
 		<%@ include file="./fragments/headerConnect.jsp" %>
 
 		<section>
-		<h1 id="titreModifVente" >Modifier la vente</h1>
+		<h1>Modifier la vente</h1>
 				<div class="blocEntierNouvelleVente">
 					<form method="post" action="<%=request.getContextPath() %>/ServletModifVente">
 					<div class="blocMessageErreur">
 						<c:if test="${listeCodesErreur!=null}">
 							<p style="color:red;">Erreur, l'article n'a pas pu être ajouté :</p>
 							<c:forEach var="codeErreur" items="${listeCodesErreur}">
-								<p style="color:red;">${LecteurMessage.getMessageErreur(codeErreur)}</p>
+								${LecteurMessage.getMessageErreur(codeErreur)} </br>
 							</c:forEach>
 						</c:if>
 					</div>
@@ -46,15 +46,14 @@
 							</div>
 						<div class="blocContenu">
 							<select name="selectCategorie" id="selectCategorie">
-							<option value="${categorieArticle.noCategorie}">${categorieArticle.libelle}</option>
 								<c:forEach var="c" items="${categorie}">
-									<c:if test="${c.noCategorie != categorieArticle.noCategorie}">
-										<c:if test="${c.noCategorie != 1}">
-											<option value="${c.noCategorie}">${c.libelle}</option>
-										</c:if>
-									</c:if>
+										<option value="${c.noCategorie}">${c.libelle}</option>
 								</c:forEach>
 							</select>
+<%-- 								<option value="${categorie.noCategorie}" selected >${categorie.libelle}</option> --%>
+<%-- 									<c:if test="${c.noCategorie != categorie.noCategorie}"> --%>
+<%-- 							        </c:if> --%>
+<!-- https://stackoverflow.com/questions/2682018/set-html-dropdown-selected-option-using-jstl -->
 						</div>
 					</div>
 					<div class="blocDouble">
