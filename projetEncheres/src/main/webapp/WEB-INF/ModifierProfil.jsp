@@ -71,4 +71,5 @@
 			</div>
 	</section>
 </body>
+<%@ include file="./fragments/footer.html" %>
 </html>
