@@ -265,12 +265,61 @@ footer {
 }
 /*********************/
 
-/* JSP NouvelleVente */
+/* JSP NouvelleVente + ModifVente */
 .blocEntierNouvelleVente {
 	display: flex;
-	justify-content: center;
-	flex-wrap: nowrap;
+	flex-direction: column;
+	margin: auto 35%;
 }
+
+.blocEntierNouvelleVente .blocContenu{
+	width: 71%;
+}
+
+.blocRetrait {
+	border: black 1px solid;
+}
+legend{
+	width: 16%;
+    margin-left: 10px;
+    margin-bottom: 0;
+}
+.bouton{
+	padding: 13px 29px;
+    margin-left: 62px;
+}
+.blocAdresse{
+	padding : 6px;
+	padding-top: 0;
+}
+
+.blocTriple{
+	display: flex;
+	margin-top: 10px;
+}
+.blocTriple .bloc1{
+	width: 50%;
+}
+.blocTriple .bloc2{
+	width: 50%;
+}
+.blocTriple .bloc3{
+	width: 50%;
+}
+
+.bouton1{
+	padding: 13px 21px;
+    margin-left: 0;
+}
+.bouton2{
+	padding: 13px 21px;
+    margin-left: 11px;
+}
+.bouton3{
+	padding: 13px 21px;
+    margin-right: 0
+}
+
 /* JSP Detail Vente */
 #titreDetailVente{
 	margin-bottom: 40px;
