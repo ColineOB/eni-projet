@@ -4,6 +4,7 @@
 <%@ page import="fr.eni.projet.bo.Enchere"%>
 <%@ page import="fr.eni.projet.bo.ArticleVendu"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <%@ include file="/WEB-INF/fragments/headerConnect.jsp" %>
 		
@@ -99,7 +100,8 @@
 			<div class="div_articles">				
 				<h4><a href="<%=request.getContextPath() %>/ServletRedirectionModifDetailVente?no=${e.article.noArticle}">${e.article.nomArticle}</a></h4>
 				<p>Prix : ${e.montant_encheres} points</p>
-				<p>Fin de l'enchère : ${e.dateEncheres}</p>
+				<p>Fin de l'enchère : <fmt:parseDate value="${e.article.dateFinEncheres}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
+						<fmt:formatDate pattern="dd.MM.yyyy HH:mm" value="${ parsedDateTime }" /></p>
 				<p>Vendeur : <a href="<%=request.getContextPath() %>/ServletModifierProfil?no=${e.user.noUtilisateur}">${e.user.pseudo}</a></p>
 			</div>
 		</c:forEach>
