@@ -101,6 +101,35 @@ h1 {
 	text-align: center;
 }
 
+.titre, .bouton, #selectCategorie {
+	background-color: #343a40;
+	border: none;
+	border-radius: 5px;
+    color: white;
+    text-decoration: none;
+}
+
+.titre {
+    text-align: center;
+    padding: 15px 32px;
+	margin:  30px 30%;
+    font-size: 30px;
+}
+
+.bouton{
+    text-align: center;
+    padding: 15px 32px;
+    font-size: 16px;
+    transition: background-color .3s;
+}
+
+.bouton:hover{
+    cursor: pointer;
+    background-color: #343a40e3;
+	animation: 3s linear 1s background-color;
+    transition: background-color .3s;
+}
+
 footer {
 	position: absolute;
 	bottom: 0;
@@ -110,6 +139,11 @@ footer {
 /*********************/
 
 /* JSP Accueil */
+.titre-accueil {
+	width: 100%;
+	margin: 0 0 30px;
+}
+
 .section_accueil {
 	margin: 0 20%;
 }
@@ -148,6 +182,8 @@ footer {
 #selectCategorie {
 	text-transform: capitalize;
 	width: 70%;
+	padding: 7px 10px;
+	cursor: pointer;
 }
 
 .div_btn_choice {
@@ -170,6 +206,7 @@ footer {
 
 #btn_search {
 	padding: 30px 50px;
+	margin: 0;
 }
 
 .div_global_articles {
@@ -186,18 +223,8 @@ footer {
 /*********************/
 
 /* JSP Inscription */
-.titre {
-	    background-color: #343a40;
-	    margin:  30px 30%;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 30px;
-}
 .formulaireInscription {
-	    display: flex;
+	display: flex;
     flex-direction: column;
     margin: 30px 30%;
     text-align: center;
@@ -211,10 +238,9 @@ footer {
     justify-content: space-between;
 }
 .gauche, .droite {
-	    display: flex;
+	display: flex;
     flex-direction: row;
     width: 45%;
-    /* align-items: flex-start; */
     justify-content: space-between;
 }
 .blocBouton {
@@ -222,15 +248,7 @@ footer {
     justify-content: space-around;
     margin: 25px 30%;
 }
-.bouton{
-    background-color: #343a40;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 16px;
-}
+
 .supprProfil {
 	text-align: center;
 } 
@@ -318,6 +336,7 @@ legend{
 	padding: 13px 29px;
     margin-left: 62px;
 }
+
 .blocAdresse{
 	padding : 6px;
 	padding-top: 0;

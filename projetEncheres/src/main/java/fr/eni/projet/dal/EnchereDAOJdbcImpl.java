@@ -59,6 +59,8 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 				ArticleVendu article = new ArticleVendu();
 				article.setNomArticle(rs.getString("nom_article"));
 				article.setNoArticle(rs.getInt("no_article"));
+				article.setDateDebutEncheres(rs.getTimestamp("date_debut_encheres").toLocalDateTime());
+				article.setDateFinEncheres(rs.getTimestamp("date_fin_encheres").toLocalDateTime());
 				Enchere enchere = new Enchere(user, article, rs.getDate("date_enchere"), rs.getInt("montant_enchere"));
 				listeEncheres.add(enchere);
 			}
@@ -91,6 +93,8 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 				ArticleVendu article = new ArticleVendu();
 				article.setNomArticle(rs.getString("nom_article"));
 				article.setNoArticle(rs.getInt("no_article"));
+				article.setDateDebutEncheres(rs.getTimestamp("date_debut_encheres").toLocalDateTime());
+				article.setDateFinEncheres(rs.getTimestamp("date_fin_encheres").toLocalDateTime());
 				Enchere enchere = new Enchere(user, article, rs.getDate("date_enchere"), rs.getInt("montant_enchere"));
 				listeEncheres.add(enchere);
 			}
@@ -122,6 +126,8 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 				ArticleVendu article = new ArticleVendu();
 				article.setNomArticle(rs.getString("nom_article"));
 				article.setNoArticle(rs.getInt("no_article"));
+				article.setDateDebutEncheres(rs.getTimestamp("date_debut_encheres").toLocalDateTime());
+				article.setDateFinEncheres(rs.getTimestamp("date_fin_encheres").toLocalDateTime());
 				Enchere enchere = new Enchere(user, article, rs.getDate("date_enchere"), rs.getInt("montant_enchere"));
 				listeEncheres.add(enchere);
 			}

@@ -5,10 +5,12 @@
 <%@ page import="fr.eni.projet.bo.ArticleVendu"%>
 
 <%@ include file="/WEB-INF/fragments/headerNotConnect.html" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%-- <c:set var="a" value="${ArticleManager.selectionnerArticleById()}"/> --%>
 		
 <section class="section_accueil">
-	<h1>Liste des enchères</h1>
+	<h1 class="titre titre-accueil">Liste des enchères</h1>
 	
 	<div class="div_global_search">
 		<h3>Filtres :</h3>
@@ -35,7 +37,7 @@
 				</div>
 			</div>
 			<div class="col-md-6 div_btn_search">
-				<input type="submit" value="Rechercher" id="btn_search"/>
+				<input type="submit" value="Rechercher" id="btn_search" class="bouton"/>
 			</div>
 		</form>
 	</div>
@@ -45,7 +47,8 @@
 			<div class="div_articles">
 				<h4><a>${e.article.nomArticle}</a></h4>
 				<p>Prix : ${e.montant_encheres} points</p>
-				<p>Fin de l'enchère : ${e.dateEncheres}</p>
+				<p>Fin de l'enchère : <fmt:parseDate value="${e.article.dateFinEncheres}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
+						<fmt:formatDate pattern="dd.MM.yyyy HH:mm" value="${ parsedDateTime }" /></p>
 				<p>Vendeur : ${e.user.pseudo}</p>
 			</div>
 		</c:forEach>
