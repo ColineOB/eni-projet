@@ -28,7 +28,8 @@ public class ArticleManager {
 		this.stringNeDoitPasEtreVide(nomArticle, exception);
 		this.stringNeDoitPasEtreVide(description, exception);
 		this.stringNeDoitPasEtreVide(nomArticle, exception);
-
+		this.categorieNeDoitPasEtreVide(noCategorie, exception);
+		
 		if (!exception.hasErreurs()) {
 			article = new ArticleVendu();
 			article.setNomArticle(nomArticle);
@@ -44,6 +45,8 @@ public class ArticleManager {
 		}
 		return article;
 	}
+
+
 
 	public ArticleVendu modifierNouvelArticle(String nomArticle, String description, LocalDateTime dateDebutEncheres, LocalDateTime dateFinEncheres,
 			int miseAPrix, int noUtilisateur, int noCategorie)
@@ -78,7 +81,7 @@ public class ArticleManager {
 	
 	private void impossibleDateInferieurDateJour(LocalDateTime date, BusinessException businessException) {
 		LocalDateTime dateDuJour = LocalDateTime.now();
-		if (date == null || date.isAfter(dateDuJour)) {
+		if (date == null || date.isBefore(dateDuJour)) {
 			businessException.ajouterErreur(CodesResultatBLL.REGLE_ARTICLE_DATE_ERREUR);
 		}
 	}
@@ -87,6 +90,13 @@ public class ArticleManager {
 		if(dateDebutEncheres.isAfter(dateFinEncheres))
 		{
 			businessException.ajouterErreur(CodesResultatBLL.REGLE_ARTICLE_DATE_FIN_ERREUR);
+		}
+	}
+	
+	private void categorieNeDoitPasEtreVide(int noCategorie, BusinessException businessException) {
+		if(noCategorie == 1)
+		{
+			businessException.ajouterErreur(CodesResultatBLL.REGLE_ARTICLE_CATEGORIE_1_ERREUR);
 		}
 	}
 	
