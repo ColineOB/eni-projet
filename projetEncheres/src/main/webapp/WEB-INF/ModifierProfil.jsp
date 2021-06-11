@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+        <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+    <%@page import="fr.eni.projet.messages.LecteurMessage"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,6 +61,14 @@
 	<form method="post" action="<%=request.getContextPath() %>/ServletSupprimerProfil" class="supprProfil">
 	<input type="submit" name="Supprimer" value="Supprimer mon compte"  class="bouton">
 	</form>
+	<div class="messageErreur">
+				<c:if test="${listeCodesErreur!=null}">
+                    <p style="color:red;">Erreur de modification:</p>
+                    <c:forEach var="codeErreur" items="${listeCodesErreur}">
+                       <c:out value="${LecteurMessage.getMessageErreur(codeErreur)}" />
+                    </c:forEach>
+                </c:if>
+			</div>
 	</section>
 </body>
 </html>
