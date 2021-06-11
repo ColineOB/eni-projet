@@ -8,7 +8,7 @@
 <%@ include file="/WEB-INF/fragments/headerConnect.jsp" %>
 		
 <section class="section_accueil">
-	<h1>Liste des enchères</h1>
+	<h1 class="titre titre-accueil">Liste des enchères</h1>
 	
 	<div class="div_global_search">
 		<h3>Filtres :</h3>
