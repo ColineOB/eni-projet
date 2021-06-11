@@ -186,27 +186,54 @@ footer {
 /*********************/
 
 /* JSP Inscription */
-.inscription {
+.titre {
+	    background-color: #343a40;
+	    margin:  30px 30%;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 30px;
+}
+.formulaireInscription {
+	    display: flex;
+    flex-direction: column;
+    margin: 30px 30%;
+    text-align: center;
+    align-content: center;
+}
+
+.ligneFormulaire {
+	margin-top: 15px;
 	display: flex;
-	flex-wrap: wrap;
-	margin: 0 auto;
+    width: 100%;
+    justify-content: space-between;
 }
-
-.inscription #gauche {
-	position: relative;
-	width: 200px;
+.gauche, .droite {
+	    display: flex;
+    flex-direction: row;
+    width: 45%;
+    /* align-items: flex-start; */
+    justify-content: space-between;
 }
-
-.inscription #droite {
-	position: relative;
-	width: 200px;
+.blocBouton {
+	display: flex;
+    justify-content: space-around;
+    margin: 25px 30%;
 }
-
-.inscription #bouton {
-	position: absolute;
-	top: 400px;
-	right: center;
+.bouton{
+    background-color: #343a40;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
 }
+.supprProfil {
+	text-align: center;
+} 
 /*********************/
 
 /* JSP Connexion */
