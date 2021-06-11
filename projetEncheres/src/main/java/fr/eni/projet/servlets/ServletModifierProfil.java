@@ -80,7 +80,7 @@ public class ServletModifierProfil extends HttpServlet {
 			//verification si le mot de passe est identique à la confirmation
 		if ( !mdp.equals( confirmation ) ) {
 			listeCodesErreur.add(CodesResultatServlets.MDP_DIFFERENT_CONFIRMATION);
-        } else if ( mdp.length() < 3 ) {
+        } else if ( mdp.length() <= 3 ) {
         	listeCodesErreur.add(CodesResultatServlets.MDP_3_CARACTERES);
         }
 

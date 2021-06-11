@@ -11,4 +11,6 @@ public interface UtilisateurDAO {
 	public Utilisateur supprimeUtilisateur(int no_utilisateur)throws BusinessException, SQLException;
 	public Utilisateur selectUtilisateurById(int noUtilisateur) throws BusinessException ;
 	public Utilisateur modifierUtilisateur(Utilisateur utilisateur) throws BusinessException;
+	public boolean verifMail(String email);
+	public boolean verifPseudo (String pseudo);
 }
