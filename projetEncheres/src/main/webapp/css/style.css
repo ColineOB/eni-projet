@@ -101,22 +101,23 @@ h1 {
 	text-align: center;
 }
 
-.titre, .bouton {
+.titre, .bouton, #selectCategorie {
 	background-color: #343a40;
 	border: none;
 	border-radius: 5px;
     color: white;
-    padding: 15px 32px;
-    text-align: center;
     text-decoration: none;
 }
 
 .titre {
+    text-align: center;
+    padding: 15px 32px;
 	margin:  30px 30%;
     font-size: 30px;
 }
 
 .bouton{
+    text-align: center;
     padding: 15px 32px;
     font-size: 16px;
     transition: background-color .3s;
@@ -181,6 +182,8 @@ footer {
 #selectCategorie {
 	text-transform: capitalize;
 	width: 70%;
+	padding: 7px 10px;
+	cursor: pointer;
 }
 
 .div_btn_choice {
