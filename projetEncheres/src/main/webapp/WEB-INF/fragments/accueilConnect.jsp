@@ -18,8 +18,8 @@
 				<div class="col-md-12">
 					<input type="search" id="article-search" name="article-search" aria-label="Rechercher parmis les enchères" placeholder="🔍 Nom de l'article">
 				</div>
-				<div class="col-md-12">
-					<label for="selectCategorie">Categorie</label>
+				<div class="col-md-12 div_categories_accueil">
+					<label for="selectCategorie">Catégorie : </label>
 					<select name="selectCategorie" id="selectCategorie">
 						<c:forEach var="c" items="${categorie}">
 							<c:choose>
@@ -88,15 +88,15 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-6">
-				<input type="submit" value="Rechercher"/>
+			<div class="col-md-6 div_btn_search">
+				<input type="submit" value="Rechercher" id="btn_search"/>
 			</div>
 		</form>
 	</div>
 	
 	<div class="div_global_articles">
 		<c:forEach var="e" items="${enchere}">
-			<div class="col-md-6 div_articles">				
+			<div class="div_articles">				
 				<h4><a href="<%=request.getContextPath() %>/ServletRedirectionModifDetailVente?no=${e.article.noArticle}">${e.article.nomArticle}</a></h4>
 				<p>Prix : ${e.montant_encheres} points</p>
 				<p>Fin de l'enchère : ${e.dateEncheres}</p>

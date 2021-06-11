@@ -18,7 +18,7 @@
 				<div class="col-md-12">
 					<input type="search" id="article-search" name="article-search" aria-label="Rechercher parmis les enchères" placeholder="🔍 Nom de l'article">
 				</div>
-				<div class="col-md-12">
+				<div class="col-md-12 div_categories_accueil">
 					<label for="selectCategorie">Catégorie : </label>
 					<select name="selectCategorie" id="selectCategorie">
 						<c:forEach var="c" items="${categorie}">
@@ -34,8 +34,8 @@
 					</select>
 				</div>
 			</div>
-			<div class="col-md-6">
-				<input type="submit" value="Rechercher"/>
+			<div class="col-md-6 div_btn_search">
+				<input type="submit" value="Rechercher" id="btn_search"/>
 			</div>
 		</form>
 	</div>

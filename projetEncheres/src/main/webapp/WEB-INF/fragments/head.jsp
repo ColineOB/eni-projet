@@ -17,4 +17,6 @@
     <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet">
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <link rel="icon" type="image/png" href="img/unicorn3.png" />
 </head>
