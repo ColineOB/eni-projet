@@ -80,23 +80,34 @@ public class ServletModifierProfil extends HttpServlet {
 			//verification si le mot de passe est identique à la confirmation
 		if ( !mdp.equals( confirmation ) ) {
 			listeCodesErreur.add(CodesResultatServlets.MDP_DIFFERENT_CONFIRMATION);
-        } else if ( mdp.length() <= 3 ) {
+
+        } if ( mdp.length() <= 3 ) {
         	listeCodesErreur.add(CodesResultatServlets.MDP_3_CARACTERES);
         }
-
-		UtilisateurManager utilisateurManager = new UtilisateurManager();
-       	try {
-       		utilisateur = utilisateurManager.modifierUtilisateur(no_utilisateur, pseudo, nom, prenom, email, tel, rue, codePostal, ville, mdp);
-       		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/ModifierProfil.jsp");
-       		session.setAttribute("utilisateur", utilisateur);
-			rd.forward(request, response);
-		} catch (BusinessException | SQLException e) {
-			//Sinon je retourne à la page d'ajout pour indiquer les problèmes:
-			e.printStackTrace();
-			request.setAttribute("listeCodesErreur",((BusinessException) e).getListeCodesErreur());
-			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/ModifierProfil.jsp");
-			rd.forward(request, response);
-	
+		
+		//Réalisation du traitement
+				if(listeCodesErreur.size()>0)
+				{
+					//Je renvoie les codes d'erreurs
+					request.setAttribute("listeCodesErreur",listeCodesErreur);
+					RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/ModifierProfil.jsp");
+					rd.forward(request, response);
+				}
+			else
+					{
+					UtilisateurManager utilisateurManager = new UtilisateurManager();
+			       	try {
+			       		utilisateur = utilisateurManager.modifierUtilisateur(no_utilisateur, pseudo, nom, prenom, email, tel, rue, codePostal, ville, mdp);
+			       		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/ModifierProfil.jsp");
+			       		session.setAttribute("utilisateur", utilisateur);
+						rd.forward(request, response);
+					} catch (BusinessException | SQLException e) {
+						//Sinon je retourne à la page d'ajout pour indiquer les problèmes:
+						e.printStackTrace();
+						request.setAttribute("listeCodesErreur",((BusinessException) e).getListeCodesErreur());
+						RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/ModifierProfil.jsp");
+						rd.forward(request, response);
+					}
 		}
 
 	}

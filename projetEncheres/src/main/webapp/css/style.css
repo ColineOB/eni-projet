@@ -223,7 +223,6 @@ footer {
 /*********************/
 
 /* JSP Inscription */
-
 .formulaireInscription {
 	display: flex;
     flex-direction: column;
@@ -337,6 +336,7 @@ legend{
 	padding: 13px 29px;
     margin-left: 62px;
 }
+
 .blocAdresse{
 	padding : 6px;
 	padding-top: 0;
