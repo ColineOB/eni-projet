@@ -31,10 +31,10 @@ public abstract class CodesResultatDAL {
 	 * Erreur à la mise à jour d'un article
 	 */
 	public static final int UPDATE_ARTICLE_ECHEC = 10005;
-//	/**
-//	 * Erreur à la suppression d'une liste
-//	 */
-//	public static final int SUPPRESSION_LISTE_ERREUR = 10006;
+	/**
+	 * Erreur à la suppression d'une aticle
+	 */
+	public static final int DELETE_ARTICLE_ECHEC = 10006;
 //	/**
 //	 * Erreur au cochage d'un article
 //	 */
