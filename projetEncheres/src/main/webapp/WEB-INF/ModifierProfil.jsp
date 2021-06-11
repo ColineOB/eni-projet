@@ -9,7 +9,7 @@
 <body>
 	<%@ include file="./fragments/headerConnect.jsp" %>
 	<section>
-	<h1>Mon profil</h1>
+	<h1>Modifier profil</h1>
 	<form method="post" action="<%=request.getContextPath() %>/ServletModifierProfil" class="profil">
 		<div class="inscription">
 			<div id="gauche">
