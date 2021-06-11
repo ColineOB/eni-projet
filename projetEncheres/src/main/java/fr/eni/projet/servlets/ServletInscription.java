@@ -71,26 +71,39 @@ public class ServletInscription extends HttpServlet {
 			//verification si le mot de passe est identique à la confirmation
 		if ( !mdp.equals( confirmation ) ) {
 			listeCodesErreur.add(CodesResultatServlets.MDP_DIFFERENT_CONFIRMATION);
-        } else if ( mdp.length() < 3 ) {
+        }
+		if ( mdp.length() <= 3 ) {
         	listeCodesErreur.add(CodesResultatServlets.MDP_3_CARACTERES);
         }
-
-				//ajout de l'utilisateur
-       InscriptionManager inscriptionManager = new InscriptionManager();
-       	try {
-       		Utilisateur utilisateur = inscriptionManager.inscrireUtilisateur(pseudo, nom, prenom, email, tel, rue, codePostal, ville, mdp, 0, false);
-       			//connection de l'utilisateur (A FAIRE)
-       		HttpSession session = request.getSession();
-			session.setAttribute("utilisateur", utilisateur);
-       		RequestDispatcher rd = request.getRequestDispatcher("/ServletAccueil");
-			rd.forward(request, response);
-		} catch (BusinessException | SQLException e) {
-			//Sinon je retourne à la page d'ajout pour indiquer les problèmes:
-			e.printStackTrace();
-			request.setAttribute("listeCodesErreur",((BusinessException) e).getListeCodesErreur());
+		
+		
+		//Réalisation du traitement
+		if(listeCodesErreur.size()>0)
+		{
+			//Je renvoie les codes d'erreurs
+			request.setAttribute("listeCodesErreur",listeCodesErreur);
 			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Inscription.jsp");
 			rd.forward(request, response);
-		} 
+		}
+		else
+		{
+					//ajout de l'utilisateur
+	       InscriptionManager inscriptionManager = new InscriptionManager();
+	       	try {
+	       		Utilisateur utilisateur = inscriptionManager.inscrireUtilisateur(pseudo, nom, prenom, email, tel, rue, codePostal, ville, mdp, 0, false);
+	       			//connection de l'utilisateur (A FAIRE)
+	       		HttpSession session = request.getSession();
+				session.setAttribute("utilisateur", utilisateur);
+	       		RequestDispatcher rd = request.getRequestDispatcher("/ServletAccueil");
+				rd.forward(request, response);
+			} catch (BusinessException | SQLException e) {
+				//Sinon je retourne à la page d'ajout pour indiquer les problèmes:
+				e.printStackTrace();
+				request.setAttribute("listeCodesErreur",((BusinessException) e).getListeCodesErreur());
+				RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/Inscription.jsp");
+				rd.forward(request, response);
+			}
+		}
 	}
 
 }
