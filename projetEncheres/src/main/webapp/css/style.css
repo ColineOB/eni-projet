@@ -94,7 +94,7 @@ body {
 }
 
 section {
-	margin-top: 150px;
+	padding: 7% 0;
 }
 
 h1 {
@@ -111,7 +111,7 @@ footer {
 
 /* JSP Accueil */
 .section_accueil {
-	margin: 150px 20% 0;
+	margin: 0 20%;
 }
 
 .div_global_search {
