@@ -317,6 +317,9 @@ footer {
 	flex-direction: column;
 	margin: auto 35%;
 }
+#titreModifVente, #titreNouvelleVente{
+	margin-bottom: 20px;
+}
 
 .blocEntierNouvelleVente .blocContenu{
 	width: 71%;
@@ -341,29 +344,19 @@ legend{
 
 .blocTriple{
 	display: flex;
+	justify-content: space-between;
 	margin-top: 10px;
-}
-.blocTriple .bloc1{
-	width: 50%;
-}
-.blocTriple .bloc2{
-	width: 50%;
-}
-.blocTriple .bloc3{
-	width: 50%;
+	
 }
 
 .bouton1{
 	padding: 13px 21px;
-    margin-left: 0;
 }
 .bouton2{
 	padding: 13px 21px;
-    margin-left: 11px;
 }
 .bouton3{
 	padding: 13px 21px;
-    margin-right: 0
 }
 
 /* JSP Detail Vente */

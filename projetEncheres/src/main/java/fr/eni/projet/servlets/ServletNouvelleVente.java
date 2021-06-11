@@ -50,8 +50,7 @@ public class ServletNouvelleVente extends HttpServlet {
 		LocalDateTime dateDebutEncheres = null;
 		LocalDateTime dateFinEncheres = null;
 		int miseAPrix = Integer.parseInt(request.getParameter("prix"));
-		//A MODIFIER 
-		int noUtilisateur = 1;
+		int noUtilisateur = 0;
 		int noCategorie = Integer.parseInt(request.getParameter("selectCategorie"));
 		
 	
@@ -80,14 +79,6 @@ public class ServletNouvelleVente extends HttpServlet {
 		Utilisateur utilisateur = (Utilisateur) session.getAttribute("utilisateur");
 		
 		noUtilisateur = utilisateur.getNoUtilisateur();
-		
-		System.out.println("nom article: "+nomArticle);
-		System.out.println("description: "+description);
-		System.out.println("date de début: "+dateDebutEncheres);
-		System.out.println("date de fin: "+dateFinEncheres);
-		System.out.println("mise a prix: "+miseAPrix);
-		System.out.println("no utilisateur: "+noUtilisateur);
-		System.out.println("no categorie: "+noCategorie);
 		
 
 		//Réalisation du traitement

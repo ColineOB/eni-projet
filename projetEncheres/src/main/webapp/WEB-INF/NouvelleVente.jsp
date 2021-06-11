@@ -13,14 +13,14 @@
 		<%@ include file="./fragments/headerConnect.jsp" %>
 
 		<section class="sectionNouvelleVente">
-		<h1>Nouvelle vente</h1>
+		<h1 id="titreNouvelleVente">Nouvelle vente</h1>
 			<div class="blocEntierNouvelleVente">
 				<form method="post" action="<%=request.getContextPath() %>/ServletNouvelleVente">
 				<div class="blocMessageErreur">
 					<c:if test="${listeCodesErreur!=null}">
 						<p style="color:red;">Erreur, l'article n'a pas pu être ajouté :</p>
 						<c:forEach var="codeErreur" items="${listeCodesErreur}">
-							${LecteurMessage.getMessageErreur(codeErreur)} </br>
+							<p style="color:red;">${LecteurMessage.getMessageErreur(codeErreur)}</p>
 						</c:forEach>
 					</c:if>
 				</div>
