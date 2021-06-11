@@ -40,11 +40,12 @@ public class ServletModifVente extends HttpServlet {
 		ArticleVendu article = null;
 		CategorieManager categorieManager = new CategorieManager();
 		Categorie categorie = null;
+		Categorie categorieArticle = null;
 		UtilisateurManager utilisateurManager = new UtilisateurManager();
 		Utilisateur user = null;
 		try {
 			article = articleManager.selectionnerArticleById(noArticle);
-//			categorie = categorieManager.selectionnerCategorieById(article.getNoCategorie());
+			categorieArticle = categorieManager.selectionnerCategorieById(article.getNoCategorie());
 			user = utilisateurManager.selectionnerUtilisateurById(article.getNoUtilisateur());
 			request.setAttribute("categorie", categorieManager.selectionnerCategories());
 
@@ -53,7 +54,7 @@ public class ServletModifVente extends HttpServlet {
 			e.printStackTrace();
 		}
 		request.setAttribute("article", article);
-//		request.setAttribute("categorie", categorie);
+		request.setAttribute("categorieArticle", categorieArticle);
 		request.setAttribute("user", user);
 		rd = request.getRequestDispatcher("/WEB-INF/ModifVente.jsp");
 		rd.forward(request, response);
