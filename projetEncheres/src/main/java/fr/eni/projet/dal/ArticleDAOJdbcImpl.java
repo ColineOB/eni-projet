@@ -16,7 +16,7 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 	private static final String SELECT_DETAIL_VENTE = " SELECT a.no_article, a.nom_article, a.description, a.date_debut_encheres, a.date_fin_encheres, "
 			+ "a.prix_initial, a.prix_vente, a.no_utilisateur, a.no_categorie" + " FROM ARTICLES_VENDUS a "
 			+ " WHERE a.no_article=?";
-//	private static final String SELECT_NOM = "SELECT a.nom_article FROM ARTICLES_VENDUS a WHERE a.no_article=?";
+	private static final String DELETE_ARTICLE = "delete from ARTICLES_VENDUS where no_article=?";
 
 	@Override
 	public void insert(ArticleVendu article) throws BusinessException {
@@ -96,6 +96,20 @@ public class ArticleDAOJdbcImpl implements ArticleDAO {
 		}
 		return article;
 	}
+	
+	public ArticleVendu delete(int noArticle) throws BusinessException {
+		
+			try {
+				Connection cnx = ConnectionProvider.getConnection();
+				PreparedStatement pstmt = cnx.prepareStatement(DELETE_ARTICLE);
+				pstmt.setInt(1, noArticle);
+				pstmt.executeUpdate();
+			 } catch(Exception e) {
+			        System.out.println(e);
+			   }
+	return null;
+	}
+	
 
 	@Override
 	public List<ArticleVendu> select() throws BusinessException {

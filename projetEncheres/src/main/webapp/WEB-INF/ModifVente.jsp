@@ -125,13 +125,13 @@
 						<div class="bloc2">
 							<input type="reset" value="Annuler" class="bouton2">
 						</div>
+					</div>
+					</form>
 						<div class="bloc3">
-							<form method="post" action="<%=request.getContextPath() %>/ServletSupprimerArticle" class="supprProfil">
+							<form method="post" action="<%=request.getContextPath() %>/ServletSupprimerArticle?no=${article.noArticle}" class="supprProfil">
 								<input type="submit" name="AnnulerVente" value="Annuler la vente" class="bouton3">
 							</form>
 						</div>
-					</div>
-					</form>
 				</div>
 		</section>
 		
