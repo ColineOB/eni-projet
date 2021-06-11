@@ -77,7 +77,10 @@ public class ArticleManager {
 		}
 		return article;
 	}
-
+	
+	public ArticleVendu supprimerNouvelArticle(int noArticle) throws BusinessException {
+		return this.articleDAO.delete(noArticle);
+	}
 	
 	private void impossibleDateInferieurDateJour(LocalDateTime date, BusinessException businessException) {
 		LocalDateTime dateDuJour = LocalDateTime.now();

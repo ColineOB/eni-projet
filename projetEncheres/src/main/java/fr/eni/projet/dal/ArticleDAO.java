@@ -16,6 +16,8 @@ public interface ArticleDAO {
 	public void insert(ArticleVendu article) throws BusinessException;
 	
 	public ArticleVendu update(ArticleVendu article) throws BusinessException;
+	
+	public ArticleVendu delete(int noArticle) throws BusinessException;
 
 	public List<ArticleVendu> select() throws BusinessException;
 
