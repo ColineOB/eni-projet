@@ -32,6 +32,8 @@ public class ServletRedirectionModifDetailVente extends HttpServlet {
 		} catch (BusinessException e) {
 			e.printStackTrace();
 		}
+		System.out.println("noUtilisateur Session " + utilisateur.getNoUtilisateur());
+		System.out.println("noUtilisateur article " + article.getNoUtilisateur());
 		
 		if(utilisateur.getNoUtilisateur() == article.getNoUtilisateur()) {
 			response.sendRedirect(request.getContextPath() + "/ServletModifVente?no="+noArticle);

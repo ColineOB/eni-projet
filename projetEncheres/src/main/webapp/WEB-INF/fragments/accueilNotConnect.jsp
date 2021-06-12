@@ -45,11 +45,16 @@
 	<div class="div_global_articles">
 		<c:forEach var="e" items="${enchere}">
 			<div class="div_articles">
-				<h4><a>${e.article.nomArticle}</a></h4>
-				<p>Prix : ${e.montant_encheres} points</p>
-				<p>Fin de l'enchère : <fmt:parseDate value="${e.article.dateFinEncheres}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
-						<fmt:formatDate pattern="dd.MM.yyyy HH:mm" value="${ parsedDateTime }" /></p>
-				<p>Vendeur : ${e.user.pseudo}</p>
+				<div class="img_enchere">
+					<img alt="" src="img/unicorn.png">
+				</div>
+				<div>
+					<h4><a>${e.article.nomArticle}</a></h4>
+					<p>Prix : ${e.montant_encheres} points</p>
+					<p>Fin de l'enchère : <fmt:parseDate value="${e.article.dateFinEncheres}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
+							<fmt:formatDate pattern="dd.MM.yyyy HH:mm" value="${ parsedDateTime }" /></p>
+					<p>Vendeur : ${e.user.pseudo}</p>
+				</div>
 			</div>
 		</c:forEach>
 	</div>

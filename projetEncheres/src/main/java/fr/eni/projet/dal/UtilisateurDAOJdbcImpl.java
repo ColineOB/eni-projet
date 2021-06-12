@@ -161,5 +161,17 @@ public class UtilisateurDAOJdbcImpl implements UtilisateurDAO {
 				}
 				return utilisateur;
 	}
+
+	@Override
+	public boolean verifMail(String email) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean verifPseudo(String pseudo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
 

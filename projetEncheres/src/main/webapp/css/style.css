@@ -219,6 +219,17 @@ footer {
 	border: 1px solid black;
 	min-width: 40%;
 	margin-bottom: 20px;
+	display: flex;
+	align-items: center;
+}
+
+.img_enchere {
+	margin: 0 20px;
+}
+
+.img_enchere img {
+	height: 95px;
+	width: 80px;
 }
 /*********************/
 
@@ -301,12 +312,14 @@ footer {
 }
 
 .boutonConnexion input {
-	padding: 10px 17px
+	padding: 10px 17px;
+	margin-left: 0px;
 }
 
 .blocCreerCompte input {
 	width: 100%;
 	padding: 20px;
+	margin-left: 0px;
 }
 /*********************/
 
@@ -349,14 +362,9 @@ legend{
 	
 }
 
-.bouton1{
+.bouton1, .bouton2, .bouton3 {
 	padding: 13px 21px;
-}
-.bouton2{
-	padding: 13px 21px;
-}
-.bouton3{
-	padding: 13px 21px;
+	margin-left: 0;
 }
 
 /* JSP Detail Vente */
