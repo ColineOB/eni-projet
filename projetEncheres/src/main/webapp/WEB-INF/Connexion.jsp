@@ -24,7 +24,7 @@
 						</div>
 						<div class="blocSubmitSouvenirOublie">
 								<div class="boutonConnexion">
-									<input type="submit" value="Connexion">
+									<input type="submit" value="Connexion" class="bouton">
 								</div>
 			  					<div class="blocSouvenirOublie">
 				  					<div class="blocSouvenir">
@@ -38,7 +38,7 @@
 						</div>
 					
 					<div class="blocCreerCompte">
-						<input type="button" onclick="window.location.href = '<%=request.getContextPath()%>/ServletInscription';" value="Créer un compte"/>
+						<input type="button" onclick="window.location.href = '<%=request.getContextPath()%>/ServletInscription';" value="Créer un compte" class="bouton"/>
 					</div>
 			</form>
 				</div>

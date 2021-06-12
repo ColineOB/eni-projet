@@ -13,7 +13,7 @@
 		<%@ include file="./fragments/headerConnect.jsp" %>
 
 		<section class="sectionNouvelleVente">
-		<h1 id="titreNouvelleVente">Nouvelle vente</h1>
+		<h1 id="titreNouvelleVente" class="titre">Nouvelle vente</h1>
 			<div class="blocEntierNouvelleVente">
 				<form method="post" action="<%=request.getContextPath() %>/ServletNouvelleVente">
 				<div class="blocMessageErreur">

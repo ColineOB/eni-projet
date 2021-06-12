@@ -90,7 +90,7 @@
 				</div>
 			</div>
 			<div class="col-md-6 div_btn_search">
-				<input type="submit" value="Rechercher" id="btn_search"/>
+				<input type="submit" value="Rechercher" id="btn_search" class="bouton"/>
 			</div>
 		</form>
 	</div>
@@ -98,11 +98,16 @@
 	<div class="div_global_articles">
 		<c:forEach var="e" items="${enchere}">
 			<div class="div_articles">				
-				<h4><a href="<%=request.getContextPath() %>/ServletRedirectionModifDetailVente?no=${e.article.noArticle}">${e.article.nomArticle}</a></h4>
-				<p>Prix : ${e.montant_encheres} points</p>
-				<p>Fin de l'enchère : <fmt:parseDate value="${e.article.dateFinEncheres}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
-						<fmt:formatDate pattern="dd.MM.yyyy HH:mm" value="${ parsedDateTime }" /></p>
-				<p>Vendeur : <a href="<%=request.getContextPath() %>/ServletModifierProfil?no=${e.user.noUtilisateur}">${e.user.pseudo}</a></p>
+				<div class="img_enchere">
+					<img alt="" src="img/unicorn.png">
+				</div>
+				<div>
+					<h4><a href="<%=request.getContextPath() %>/ServletRedirectionModifDetailVente?no=${e.article.noArticle}">${e.article.nomArticle}</a></h4>
+					<p>Prix : ${e.montant_encheres} points</p>
+					<p>Fin de l'enchère : <fmt:parseDate value="${e.article.dateFinEncheres}" pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
+							<fmt:formatDate pattern="dd.MM.yyyy HH:mm" value="${ parsedDateTime }" /></p>
+					<p>Vendeur : <a href="<%=request.getContextPath() %>/ServletModifierProfil?no=${e.user.noUtilisateur}">${e.user.pseudo}</a></p>
+				</div>
 			</div>
 		</c:forEach>
 	</div>
