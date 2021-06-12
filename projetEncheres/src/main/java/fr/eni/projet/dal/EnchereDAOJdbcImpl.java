@@ -25,7 +25,7 @@ public class EnchereDAOJdbcImpl implements EnchereDAO {
 	private static final String SELECT_ALL = "SELECT date_enchere, montant_enchere, nom_article, a.no_article, date_debut_encheres, date_fin_encheres, pseudo,"
 			+ " u.no_utilisateur FROM ENCHERES e"
 			+ "	LEFT JOIN ARTICLES_VENDUS a ON e.no_article = a.no_article"
-			+ "	LEFT JOIN UTILISATEURS u ON e.no_utilisateur = u.no_utilisateur;";
+			+ "	LEFT JOIN UTILISATEURS u ON a.no_utilisateur = u.no_utilisateur;";
 	private static final String SELECT_BY_CATEGORIE = "SELECT date_enchere, montant_enchere, nom_article, date_debut_encheres, date_fin_encheres, a.no_article, pseudo,"
 			+ " u.no_utilisateur FROM ENCHERES e"
 			+ "	LEFT JOIN ARTICLES_VENDUS a ON e.no_article = a.no_article"

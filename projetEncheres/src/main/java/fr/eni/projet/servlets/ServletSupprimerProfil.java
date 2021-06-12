@@ -17,7 +17,6 @@ import jakarta.servlet.http.HttpSession;
 @WebServlet("/ServletSupprimerProfil")
 public class ServletSupprimerProfil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	public static final String URL_REDIRECTION = "http://localhost:8080/projetEncheres/";
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -39,7 +38,7 @@ public class ServletSupprimerProfil extends HttpServlet {
        		utilisateur = utilisateurManager.supprimerUtilisateur(no_utilisateur);
        		
             session.invalidate();
-            response.sendRedirect( URL_REDIRECTION );
+            response.sendRedirect(request.getContextPath() + "/ServletAccueil");
        	}catch (Exception e) {
 			// TODO: handle exception
 		}

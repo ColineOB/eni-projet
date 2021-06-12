@@ -12,7 +12,7 @@
 	<body>
 		<%@ include file="./fragments/headerConnect.jsp" %>
 		<section>
-			<h1 id="titreDetailVente">Détail Vente</h1>
+			<h1 id="titreDetailVente" class="titre">Détail Vente</h1>
 			<div class="blocEntierDetailVente">
 				<div class="blocContenu">
 					<h4>${article.nomArticle}</h4>
@@ -81,7 +81,7 @@
 						</div>
 						<div class="blocContenu">
 							<input type="number" name="prix" id="prix" min="${article.prixVente}">
-							<input type="submit" id="encherir" value="Enchérir">
+							<input type="submit" id="encherir" value="Enchérir" class="bouton">
 						</div>
 					</form>
 				</div>
